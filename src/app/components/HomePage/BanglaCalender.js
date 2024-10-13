@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const BanglaCalendar = () => {
   // State for selected month and year
@@ -43,11 +43,11 @@ const BanglaCalendar = () => {
   return (
     <div className="max-w-lg mx-auto mt-6">
       {/* Dropdown for month and year */}
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-between mb-4 gap-4">
         <select
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
-          className="p-2 border rounded"
+          className="p-2 border rounded w-full"
         >
           {banglaMonths.map((month, index) => (
             <option key={index} value={index}>
@@ -58,7 +58,7 @@ const BanglaCalendar = () => {
         <select
           value={selectedYear}
           onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-          className="p-2 border rounded"
+          className="p-2 border rounded w-full"
         >
           {/* Generate year options dynamically */}
           {[...Array(5)].map((_, i) => {
@@ -76,7 +76,7 @@ const BanglaCalendar = () => {
       <div className="grid grid-cols-7 gap-1 text-center">
         {/* Render week days */}
         {banglaDays.map((day, index) => (
-          <div key={index} className="h-10 bg-gray-200 flex items-center justify-center font-bold">
+          <div key={index} className="h-10 bg-gray-200 flex items-center justify-center">
             {day}
           </div>
         ))}

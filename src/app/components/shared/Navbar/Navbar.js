@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import MenuDrawer from './MenuDrawer';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -24,14 +25,14 @@ const Navbar = () => {
         <div className='hidden md:flex items-center justify-between'>
           {/* Links */}
           <div className="flex items-center lg:text-lg md:text-base gap-2 lg:gap-4">
-            <a href="#" className="hover:text-red-600">জাতীয়</a>
-            <a href="#" className="hover:text-red-600">আন্তর্জাতিক</a>
-            <a href="#" className="hover:text-red-600">সাক্ষাৎকার</a>
-            <a href="#" className="hover:text-red-600">ক্যাম্পাস</a>
-            <a href="#" className="hover:text-red-600">এডুকর্ণার</a>
-            <a href="#" className="hover:text-red-600">স্বাস্থ্য</a>
-            <a href="#" className="hover:text-red-600">সম্পাদকীয়</a>
-            <a href="#" className="hover:text-red-600">চাকরি</a>
+            <Link href="/categories/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
+            <Link href="/categories/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
+            <Link href="/categories/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
+            <Link href="/categories/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
+            <Link href="/categories/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
+            <Link href="/categories/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
+            <Link href="/categories/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
+            <Link href="/categories/চাকরি" className="hover:text-red-600">চাকরি</Link>
             {/* Menu & Search Toggle (Client Components) */}
             <MenuToggle />
             <SearchToggle /> {/* Search Toggle Client Component */}
