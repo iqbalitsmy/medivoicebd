@@ -7,7 +7,7 @@ const SubCategoryPage = () => {
         <div className='mb-6'>
             {/* first news */}
             <div className='mx-auto md:pr-6 mb-4'>
-                <Image className='mx-auto' src={"/images/news/clinical-psychology.jpg"} height={300} width={1000} alt='banner ad medivoice health' />
+                <Image className='mx-auto' src={"/images/news/dengue-new.jpg"} height={300} width={1000} alt='banner ad medivoice health' />
                 <div className="text-[32px] font-bold leading-10 mt-4 mb-6">
                     <h1 className='hover:text-[#d84315] cursor-pointer'><a href="">‘মানসিক স্বাস্থ্যসেবার বাইরে দেশের ৯২ শতাংশ মানুষ’</a></h1>
                 </div>
