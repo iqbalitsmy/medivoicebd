@@ -2,17 +2,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "./components/shared/Footer";
 import Navbar from "./components/shared/Navbar/Navbar";
-import Head from "next/head";
+import ScrollToTopButton from "./components/shared/ScrollToTopButton/ScrollToTopButton";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const kironSans = localFont({
+  src: "./fonts/Kiron.woff",
+  variable: "--font-kiron-sans",
 });
 
 export const metadata = {
@@ -25,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${kironSans.variable} font-sans antialiased`}
       >
         <header>
           <Navbar />
@@ -34,6 +28,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <ScrollToTopButton />
       </body>
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0"></script>
     </html>

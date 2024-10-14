@@ -19,16 +19,14 @@ const CategoryLayout = ({ children, params }) => {
                 (subCategories.length > 0) && (
                     <nav className='mt-6 flex items-center gap-8 pb-4 border-solid border-black border-b-[1px]'>
                         <h1 className='text-[#fd0408] text-[22px] font-bold'><Link href={"/categories/জাতীয়"}>{decodeURIComponent(params.category)}</Link></h1>
-                        <ul className='flex items-center gap-2'>
+                        <ul className='flex items-center'>
                             {subCategories.map((subCategory, i) => (
-                                <React.Fragment key={i}>
-                                    <li>
-                                        <NavLink path={`/categories/${decodeURIComponent(params.category).split(" ").join("-")}/${subCategory.path}`} title={subCategory.title} />
-                                    </li>
-                                    {i < subCategories.length - 1 && (
-                                        <span className="mx-2">|</span>
-                                    )}
-                                </React.Fragment>
+                                <li
+                                    key={i}
+                                    className={`text-lg px-4 ${i < subCategories.length - 1 ? "border-solid border-black border-0 border-r-[1px]" : ""}`}
+                                >
+                                    <NavLink path={`/categories/${decodeURIComponent(params.category).split(" ").join("-")}/${subCategory.path}`} title={subCategory.title} />
+                                </li>
                             ))}
                         </ul>
                     </nav>

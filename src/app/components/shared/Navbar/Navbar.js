@@ -17,7 +17,9 @@ const Navbar = () => {
         </div>
         {/* Logo */}
         <div className="grid place-content-center">
-          <Image src="/images/logo/logo.png" alt="Logo" width={150} height={300} />
+          <Link href={"/"}>
+            <Image src="/images/logo/logo.png" alt="Logo" width={150} height={300} />
+          </Link>
         </div>
         <div className='mr-4 block md:hidden p-2 border-solid border-gray-200 border-[1px]'>
           <MenuDrawer />
