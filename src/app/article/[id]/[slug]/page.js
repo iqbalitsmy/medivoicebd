@@ -1,4 +1,4 @@
-import SharedCard from '@/app/components/ArticleDetails/SharedCard';
+import PersonDetailsCard from '@/app/components/ArticleDetails/SharedCard';
 import SocialShare from '@/app/components/ArticleDetails/SocialShare';
 import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
 import { faCaretRight, faPlay, faShare, faTag } from '@fortawesome/free-solid-svg-icons';
@@ -27,9 +27,10 @@ const events = [
 const ArticlePage = () => {
     return (
         <div className='flex flex-wrap'>
+            {/* person information */}
             <aside className='w-full md:w-1/4 px-4'>
                 {/* ------shared option------ */}
-                <SharedCard person={person} publishDate={"৩১ অগাস্ট, ২০২৪ ১০:১৬ এএম"} />
+                <PersonDetailsCard person={person} publishDate={"৩১ অগাস্ট, ২০২৪ ১০:১৬ এএম"} />
             </aside>
             {/* article */}
             <div className='w-full md:w-3/4 px-4 grid gap-4'>

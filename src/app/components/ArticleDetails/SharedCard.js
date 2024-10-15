@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React from 'react';
 
-const SharedCard = ({ person, publishDate }) => {
+const PersonDetailsCard = ({ person, publishDate }) => {
     const handleShare = (platform) => {
         const url = window.location.href; // Current page URL
         const title = document.title; // Page title
@@ -48,7 +48,7 @@ const SharedCard = ({ person, publishDate }) => {
                         width={100}
                         height={100}
                     />
-                    <h3 className="text-lg font-bold">{person.name || 'Name not available'}</h3>
+                    <h3 className="text-lg font-bold">{<a href="">{person.name}</a> || 'Name not available'}</h3>
                     <p className="text-sm">{person.occupation || 'Occupation not available'}</p>
                     <p className="text-sm">{person.organization || 'Organization not available'}</p>
                 </>
@@ -91,4 +91,4 @@ const SharedCard = ({ person, publishDate }) => {
     );
 };
 
-export default SharedCard;
+export default PersonDetailsCard;
