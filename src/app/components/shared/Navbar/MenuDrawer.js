@@ -3,8 +3,7 @@
 import { faBars, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import MenuToggle from './MenuToggle';
-import SearchToggle from './SearchToggle';
+import AllCategories from './AllCategories';
 import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 
@@ -19,35 +18,38 @@ const MenuDrawer = () => {
                 <FontAwesomeIcon icon={faBars} className='' />
             </button>
             <nav
-                className={`py-2 absolute bottom-0 left-0 right-0 bg-white mx-auto transition-all duration-300 overflow-hidden -z-10 ${isMenuDrawerOpen ? "h-full z-20" : "h-0"}`}
+                className={`py-2 pb-10 absolute bottom-0 left-0 right-0 bg-white mx-auto transition-all duration-300 overflow-hidden -z-10 ${isMenuDrawerOpen ? "translate-y-full z-10" : "-translate-y-full"}`}
             >
                 <div className='block flex-col md:hidden items-center justify-start pl-4'>
                     {/* Links */}
                     <div>
                         <ul className="grid items-center lg:text-lg md:text-base gap-4">
                             <li>
-                                <Link href="/categories/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
+                                <Link href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
                             </li>
                             <li>
-                                <Link href="/categories/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
+                                <Link href="/category/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
                             </li>
                             <li>
-                                <Link href="/categories/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
+                                <Link href="/category/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
                             </li>
                             <li>
-                                <Link href="/categories/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
+                                <Link href="/category/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
                             </li>
                             <li>
-                                <Link href="/categories/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
+                                <Link href="/category/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
                             </li>
                             <li>
-                                <Link href="/categories/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
+                                <Link href="/category/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
                             </li>
                             <li>
-                                <Link href="/categories/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
+                                <Link href="/category/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
                             </li>
                             <li>
-                                <Link href="/categories/চাকরি" className="hover:text-red-600">চাকরি</Link>
+                                <Link href="/category/চাকরি" className="hover:text-red-600">চাকরি</Link>
+                            </li>
+                            <li>
+                                <AllCategories />
                             </li>
                         </ul>
                     </div>

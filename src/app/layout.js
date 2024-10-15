@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${kironSans.variable} font-sans antialiased`}
       >
-        <header>
+        <header className="mb-24 md:mb-36 lg:mb-24">
           <Navbar />
         </header>
         <main>

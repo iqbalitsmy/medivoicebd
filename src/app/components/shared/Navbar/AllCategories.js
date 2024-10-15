@@ -1,4 +1,3 @@
-// src/app/components/shared/MenuToggle.js (Client Component)
 'use client';
 
 import { faBars, faEnvelope, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -7,15 +6,14 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import SearchToggle from './SearchToggle';
 import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import Link from 'next/link';
 
-const MenuToggle = () => {
+const AllCategories = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-    const handleClickOutside =
-        (event) => {
-            if (!event.target.closest(".menu-open") && !event.target.closest(".input-search")) {
+    const handleClickOutside = (event) => {
+            if (!event.target.closest(".menu-open")) {
+                console.log(".menu-open")
                 setIsMenuOpen(false);
             }
             return;
@@ -32,21 +30,21 @@ const MenuToggle = () => {
     return (
         <>
             {/* Menu Button */}
-            <button onClick={toggleMenu} className="text-base md:text-lg  lg:text-xl flex flex-wrap items-center gap-[1px] lg:gap-1 menu-open">
+            <button onClick={toggleMenu} className="text-base md:text-lg  lg:text-xl flex flex-wrap items-center gap-2 md:gap-[1px] lg:gap-1 menu-open">
                 <FontAwesomeIcon icon={faBars} className='' />
                 <span>সব</span>
             </button>
 
             {/* for shadow */}
-            <div className={`fixed inset-0 bg-black w-full min-h-full mx-auto transition-all ${isMenuOpen ? "opacity-20 z-10" : "opacity-0 -z-50"}`}
+            <div className={`fixed inset-0 bg-black w-full min-h-full mx-auto transition-all ${isMenuOpen ? "opacity-20 z-20" : "opacity-0 -z-50"}`}
             >
             </div>
             {/* Dropdown Menu */}
             <nav
-                className={`py-2 absolute top-0 left-0 right-0 w-full bg-white mx-auto transition-all duration-300 z-20 ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
+                className={`menu-open py-2 absolute top-0 left-0 right-0 w-full bg-white mx-auto transition-all duration-300 z-30 ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
             >
                 <div className=''>
-                    <div className="container mx-auto flex flex-wrap items-center justify-between py-2">
+                    <div className="container max-w-[1170px] mx-auto flex flex-wrap items-center justify-between py-2">
                         {/* Logo */}
                         <div className="grid place-content-center">
                             <Image src="/images/logo/logo.png" alt="Logo" width={150} height={300} />
@@ -71,31 +69,31 @@ const MenuToggle = () => {
                         </div>
                     </div>
                     {/* Links */}
-                    <div className="m-4 container mx-auto">
+                    <div className="m-4 container max-w-[1170px] mx-auto">
                         <ul className='grid justify-center grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-center text-lg gap-2 lg:gap-4'>
                             <li>
-                                <Link href="/categories/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
+                                <a href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</a>
                             </li>
                             <li>
-                                <Link href="/categories/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
+                                <a href="/category/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</a>
                             </li>
                             <li>
-                                <Link href="/categories/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
+                                <a href="/category/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</a>
                             </li>
                             <li>
-                                <Link href="/categories/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
+                                <a href="/category/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</a>
                             </li>
                             <li>
-                                <Link href="/categories/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
+                                <a href="/category/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</a>
                             </li>
                             <li>
-                                <Link href="/categories/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
+                                <a href="/category/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</a>
                             </li>
                             <li>
-                                <Link href="/categories/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
+                                <a href="/category/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</a>
                             </li>
                             <li>
-                                <Link href="/categories/চাকরি" className="hover:text-red-600">চাকরি</Link>
+                                <a href="/category/চাকরি" className="hover:text-red-600">চাকরি</a>
                             </li>
                         </ul>
                     </div>
@@ -105,4 +103,4 @@ const MenuToggle = () => {
     );
 };
 
-export default MenuToggle;
+export default AllCategories;

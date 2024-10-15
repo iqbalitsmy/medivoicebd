@@ -1,6 +1,5 @@
-// src/app/components/shared/Navbar.js (Server Component)
 import Image from 'next/image';
-import MenuToggle from './MenuToggle'; // Client component for the menu toggle
+import AllCategories from './AllCategories'; // Client component for the menu toggle
 import SearchToggle from './SearchToggle'; // Client component for the search toggle
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
@@ -9,8 +8,11 @@ import MenuDrawer from './MenuDrawer';
 import Link from 'next/link';
 
 const Navbar = () => {
+
   return (
-    <nav className="shadow-md py-2 relative bg-white">
+    <nav
+      className={`shadow-md py-2 fixed top-0 left-0 bg-white w-full z-50 transition-all duration-300 ease-in-out`}
+    >
       <div className="container mx-auto max-w-[1170px] flex items-center justify-between py-2 px-4">
         <div className='pl-4 block md:hidden'>
           <SearchToggle /> {/* Search Toggle Client Component */}
@@ -27,16 +29,16 @@ const Navbar = () => {
         <div className='hidden md:flex items-center justify-between'>
           {/* Links */}
           <div className="flex items-center lg:text-lg md:text-base gap-2 lg:gap-4">
-            <Link href="/categories/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
-            <Link href="/categories/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
-            <Link href="/categories/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
-            <Link href="/categories/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
-            <Link href="/categories/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
-            <Link href="/categories/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
-            <Link href="/categories/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
-            <Link href="/categories/চাকরি" className="hover:text-red-600">চাকরি</Link>
+            <Link href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
+            <Link href="/category/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
+            <Link href="/category/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
+            <Link href="/category/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
+            <Link href="/category/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
+            <Link href="/category/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
+            <Link href="/category/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
+            <Link href="/category/চাকরি" className="hover:text-red-600">চাকরি</Link>
             {/* Menu & Search Toggle (Client Components) */}
-            <MenuToggle />
+            <AllCategories />
             <SearchToggle /> {/* Search Toggle Client Component */}
           </div>
 

@@ -20,14 +20,14 @@ const ArticleLayout = ({ children }) => {
                 {
                     (subCategories.length > 0) && (
                         <nav className='mt-6 flex items-center gap-8 pb-4 border-solid border-black border-b-[1px]'>
-                            <h1 className='text-[#fd0408] text-[22px] font-bold'><Link href={"/categories/জাতীয়"}>জাতীয়</Link></h1>
+                            <h1 className='text-[#fd0408] text-[22px] font-bold'><Link href={"/category/জাতীয়"}>জাতীয়</Link></h1>
                             <ul className='flex items-center'>
                                 {subCategories.map((subCategory, i) => (
                                     <li
                                         key={i}
                                         className={`text-lg px-4 ${i < subCategories.length - 1 ? "border-solid border-black border-0 border-r-[1px]" : ""}`}
                                     >
-                                        <NavLink path={`/categories/জাতীয়/${subCategory.path}`} title={subCategory.title} />
+                                        <NavLink path={`/category/জাতীয়/${subCategory.path}`} title={subCategory.title} />
                                     </li>
                                 ))}
                             </ul>

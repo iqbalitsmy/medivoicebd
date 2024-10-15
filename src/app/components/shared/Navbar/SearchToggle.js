@@ -23,14 +23,13 @@ const SearchToggle = () => {
         };
 
     // handle drawer click outside
-    const handleTopInputClickOutside =
-        (event) => {
-            if (!event.target.closest(".top-search-input")) {
-                console.log("top-search-input 2")
-                setIsSearchOpen(false);
-            }
-            return;
-        };
+    const handleTopInputClickOutside = (event) => {
+        if (!event.target.closest(".top-search-input")) {
+            console.log("top-search-input 2")
+            setIsSearchOpen(false);
+        }
+        return;
+    };
 
     // Add event listener for clicks outside
     useEffect(() => {
@@ -49,12 +48,12 @@ const SearchToggle = () => {
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
             {/* for shadow */}
-            <div className={`fixed inset-0 bg-black w-full min-h-full mx-auto transition-all duration-200 ${isSearchOpen ? "opacity-20 z-10" : "opacity-0 -z-50"}`}
+            <div className={`fixed inset-0 bg-black w-full min-h-full mx-auto transition-all duration-200 ${isSearchOpen ? "opacity-20 z-40" : "opacity-0 -z-50"}`}
             >
             </div>
 
             {/* Search Input */}
-            <div className={`absolute top-0 left-0 right-0 px-4 transition-all duration-300 ${isSearchOpen ? "translate-y-0 z-20" : "-translate-y-full"} top-search-input`}>
+            <div className={`absolute top-0 left-0 right-0 px-4 transition-all duration-300 ${isSearchOpen ? "translate-y-0 z-50" : "-translate-y-full"} top-search-input`}>
                 <div className='px-4 w-full bg-white p-4 shadow-md flex items-center justify-center'>
                     <input
                         type="text"
