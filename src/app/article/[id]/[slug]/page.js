@@ -1,5 +1,6 @@
 import SharedCard from '@/app/components/ArticleDetails/SharedCard';
 import SocialShare from '@/app/components/ArticleDetails/SocialShare';
+import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
 import { faCaretRight, faPlay, faShare, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
@@ -27,7 +28,7 @@ const ArticlePage = () => {
     return (
         <div className='flex flex-wrap'>
             <aside className='w-full md:w-1/4 px-4'>
-                {/* shared option */}
+                {/* ------shared option------ */}
                 <SharedCard person={person} publishDate={"৩১ অগাস্ট, ২০২৪ ১০:১৬ এএম"} />
             </aside>
             {/* article */}
@@ -52,7 +53,7 @@ const ArticlePage = () => {
                 <div className='p-2 text-justify text-lg border-solid border-y-2 border-blue-900 bg-[#fffeea]'>
                     <p>মেডিভয়েসের জনপ্রিয় ভিডিও কন্টেন্টগুলো দেখতে সাবস্ক্রাইব করুন MedivoiceBD ইউটিউব চ্যানেল। আপনার মতামত/লেখা পাঠান medivoice.2014@gmail.com এ।</p>
                 </div>
-                {/* share and tags option */}
+                {/* --------share and tags option-------- */}
                 <div className="">
                     <div className="p-2 flex items-center gap-2 bg-[#e6f4e5] text-2xl mb-4">
                         <FontAwesomeIcon icon={faShare} />
@@ -78,7 +79,7 @@ const ArticlePage = () => {
                         </div>
                     </div>
                 </div>
-                {/* ঘটনা প্রবাহ */}
+                {/* ---------ঘটনা প্রবাহ-------- */}
                 <div>
                     <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg mb-2 pl-4">
                         ঘটনা প্রবাহ : কবিতা
@@ -106,24 +107,45 @@ const ArticlePage = () => {
                         ))}
                     </ul>
                 </div>
-                {/* news navigation */}
-                <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-8 mt-8">
-                    <div className="text-center">
-                        <h2 className="font-bold text-lg md:text-xl text-gray-800">
-                            বিএসএমএমইউ’র বায়োকেমিস্ট্রির চেয়ারম্যান অধ্যাপক মোজাম্মেল
+                {/* -------news navigation------ */}
+                <div className="mt-8">
+                    <div className="text-center flex justify-between items-center gap-4">
+                        <h2 className="font-bold text-[28px]">
+                            <a href="">
+                                বিএসএমএমইউ’র বায়োকেমিস্ট্রির চেয়ারম্যান অধ্যাপক মোজাম্মেল
+                            </a>
                         </h2>
-                        <button className="mt-4 bg-gray-200 text-red-600 px-4 py-2 rounded-lg shadow hover:bg-gray-300">
-                            &lt;&lt;&lt; আগের নিউজ
+
+                        <h2 className="font-bold text-[28px]">
+                            <a href="">
+                                ৫ দশমিক ৯ মাত্রার ভূমিকম্পে কাঁপল রাশিয়ার কামচাটকা
+                            </a>
+                        </h2>
+                    </div>
+                    {/* navigation button */}
+                    <div className="text-center flex justify-between items-center gap-6">
+                        {/* previeous news button */}
+                        <button className="w-full mt-4 py-4 bg-gray-200 text-[22px] font-bold hover:bg-gray-300">
+                            <span className='text-red-600 pr-2'>&lt;&lt;&lt;</span>
+                            <span>আগের নিউজ</span>
+                        </button>
+
+                        {/* next news button */}
+                        <button className="w-full mt-4 py-4 bg-gray-200 text-[22px] font-bold hover:bg-gray-300">
+                            <span>পরের নিউজ </span>
+                            <span className='text-red-600 pl-2'>&gt;&gt;&gt;</span>
                         </button>
                     </div>
-
-                    <div className="text-center">
-                        <h2 className="font-bold text-lg md:text-xl text-gray-800">
-                            ৫ দশমিক ৯ মাত্রার ভূমিকম্পে কাঁপল রাশিয়ার কামচাটকা
-                        </h2>
-                        <button className="mt-4 bg-gray-200 text-red-600 px-4 py-2 rounded-lg shadow hover:bg-gray-300">
-                            পরের নিউজ &gt;&gt;&gt;
-                        </button>
+                </div>
+                {/* ------------আরও পড়ুন------------ */}
+                <div>
+                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-[22px] mb-2 pl-4">আরও পড়ুন</h2>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-1'>
+                        {
+                            Array.from({ length: 6 }).map((_, index) => (
+                                <MiniNewsCard key={index} />
+                            ))
+                        }
                     </div>
                 </div>
             </div>
