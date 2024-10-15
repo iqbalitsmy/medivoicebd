@@ -11,7 +11,7 @@ import Link from 'next/link';
 const Navbar = () => {
   return (
     <nav className="shadow-md py-2 relative bg-white">
-      <div className="container mx-auto max-w-[1170px] flex items-center justify-between py-2">
+      <div className="container mx-auto max-w-[1170px] flex items-center justify-between py-2 px-4">
         <div className='pl-4 block md:hidden'>
           <SearchToggle /> {/* Search Toggle Client Component */}
         </div>

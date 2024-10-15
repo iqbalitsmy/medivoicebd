@@ -7,6 +7,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import SearchToggle from './SearchToggle';
 import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import Link from 'next/link';
 
 const MenuToggle = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,28 +74,28 @@ const MenuToggle = () => {
                     <div className="m-4 container mx-auto">
                         <ul className='grid justify-center grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-center text-lg gap-2 lg:gap-4'>
                             <li>
-                                <a href="#" className="hover:text-red-600">জাতীয়</a>
+                                <Link href="/categories/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-red-600">আন্তর্জাতিক</a>
+                                <Link href="/categories/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-red-600">সাক্ষাৎকার</a>
+                                <Link href="/categories/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-red-600">ক্যাম্পাস</a>
+                                <Link href="/categories/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-red-600">এডুকর্ণার</a>
+                                <Link href="/categories/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-red-600">স্বাস্থ্য</a>
+                                <Link href="/categories/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-red-600">সম্পাদকীয়</a>
+                                <Link href="/categories/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-red-600">চাকরি</a>
+                                <Link href="/categories/চাকরি" className="hover:text-red-600">চাকরি</Link>
                             </li>
                         </ul>
                     </div>
