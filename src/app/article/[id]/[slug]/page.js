@@ -33,9 +33,9 @@ const ArticlePage = async ({ params }) => {
                         {/* title */}
                         <h1 className='text-[32px] font-bold'>{articleData.title}</h1>
                         {/* image */}
-                        <Image src={`/images/news/clinical-psychology.jpg`} height={400} width={540} alt={articleData.title} />
+                        {/* <Image src={`/images/news/clinical-psychology.jpg`} height={400} width={540} alt={articleData.title} /> */}
                         {/* image */}
-                        {/* <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={800} alt={articleData.title} /> */}
+                        <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={540} alt={articleData.title} />
 
                         {/* image caption */}
                         <figcaption className='italic'>ছবি: {articleData.image_caption}</figcaption>
