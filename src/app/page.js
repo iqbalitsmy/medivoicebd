@@ -2,17 +2,20 @@ import Asidebar from "./components/HomePage/Asidebar";
 import CalenderDate from "./components/HomePage/CalenderDate";
 import Headlines from "./components/HomePage/Headlines";
 import MainSection from "./components/HomePage/MainSection";
+import { getData } from "./utils/getData";
 
-export default function Home() {
+export default async function Home() {
+  // const headlines = await getData("https://api.medivoicebd.com/latest-news");
+
   return (
     <div className="min-h-screen px-4">
       <section className="max-w-[1170px] mx-auto">
         <CalenderDate />
-        <Headlines />
+        <Headlines  />
       </section>
       <section className="container mx-auto max-w-[1170px] flex flex-wrap justify-between">
-      <MainSection />
-      <Asidebar />
+        <MainSection />
+        <Asidebar />
       </section>
     </div>
   );

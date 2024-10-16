@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React from 'react';
 
-const PersonDetailsCard = ({ person, publishDate }) => {
+const PersonDetailsCard = ({ person = {}, publishDate }) => {
     const handleShare = (platform) => {
         const url = window.location.href; // Current page URL
         const title = document.title; // Page title
@@ -39,22 +39,21 @@ const PersonDetailsCard = ({ person, publishDate }) => {
     return (
         <div className="border rounded-md p-2 text-center">
             {/* Conditionally Render Person Info */}
-            {person ? (
+            {person.name && (
                 <>
                     <Image
                         className="rounded-full mx-auto mb-4"
-                        src={person.image || '/images/person/default-avatar.png'}
-                        alt={person.name || 'Person'}
+                        src={person.image}
+                        alt={person.name}
                         width={100}
                         height={100}
                     />
-                    <h3 className="text-lg font-bold">{<a href="">{person.name}</a> || 'Name not available'}</h3>
-                    <p className="text-sm">{person.occupation || 'Occupation not available'}</p>
-                    <p className="text-sm">{person.organization || 'Organization not available'}</p>
+                    <h3 className="text-lg font-bold">{<a href="">{person.name}</a>}</h3>
+                    <p className="text-sm">{person.occupation}</p>
+                    <p className="text-sm">{person.organization}</p>
                 </>
-            ) : (
-                <p className="text-sm italic">Person details not provided</p>
-            )}
+            )
+            }
 
             {/* Static Date */}
             <p className="text-lg mb-2">{publishDate || '31 August, 2024 10:16 AM'}</p>

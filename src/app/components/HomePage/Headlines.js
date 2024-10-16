@@ -1,20 +1,49 @@
 'use client';
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faL, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
 const Headlines = () => {
     const [direction, setDirection] = useState("left");
     const [isPaused, setIsPaused] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [headlines, setHeadlines] = useState([]);
 
-    const headlines = [
-        'চিকিৎসাধীন শিশুদের স্বস্ত্বে বাইরে যাবে রোবট',
-        '১০ দাবিতে ৮ দিন ধরে অনশন করছে চিকিৎসকরা',
-        'চলতি বছরে ডেঙ্গুতে মৃত্যু ২০০ ছাড়াল',
-        'মেডিকেল শিক্ষার্থীদের আন্দোলন অব্যাহত',
-    ];
+    useEffect(() => {
+        async function headlinesData() {
+            try {
+                const res = await fetch("https://api.medivoicebd.com/latest-news");
+                const data = await res.json()
+                setHeadlines(data);
+                setIsLoading(false);
+            } catch (error) {
+                setError(error.message);
+                setIsLoading(false);
+            }
+        }
+        headlinesData();
+    }, []);
+
+
+    if (isLoading) {
+        return (
+          <div className="text-black pt-6 text-center">
+            <p>Loading Headlines...</p>
+          </div>
+        );
+      }
+
+    if (error) {
+        return (
+          <div className="text-red-700 pt-6 text-center">
+            <p>{error}</p>
+          </div>
+        );
+      }
 
     return (
         <div className="relative container mx-auto flex items-center border-solid border-[#d84315] border-[1px] my-6">
@@ -37,9 +66,9 @@ const Headlines = () => {
                 >
                     {
                         headlines.map((headline, i) => (
-                            <span key={i} className='flex items-center hover:text-blue-800' >
+                            <span key={headline.id} className='flex items-center hover:text-blue-800' >
                                 <Image src="/images/logo/favicon.png" alt="Logo" width={20} height={20} />
-                                <a className='mx-2' href="">{headline}</a>
+                                <a className='mx-2' href={headline.url}>{headline.title}</a>
                             </span>
                         ))
                     }

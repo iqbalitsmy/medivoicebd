@@ -1,6 +1,7 @@
 import AsideCategoriesTabs from '@/app/components/HomePage/AsideCategoriesTabs';
 import FlexMiniNewsCard from '@/app/components/shared/FlexMiniNewsCard/FlexMiniNewsCard';
 import NavLink from '@/app/components/shared/NavLink/NavLink';
+import { getData } from '@/app/utils/getData';
 import Link from 'next/link';
 import React from 'react';
 
@@ -11,14 +12,21 @@ const subCategories = [
     { title: "অন্যান্য খবর", path: "অন্যান্য-খবর" },
 ]
 
-const CategoryLayout = ({ children, params }) => {
+const CategoryLayout = async ({ children, params }) => {
+    // const headlines = await getData("https://api.medivoicebd.com/latest-news");
+
 
     return (
         <section className='min-h-screen container mx-auto max-w-[1170px] px-4'>
             {
                 (subCategories.length > 0) && (
                     <nav className='mt-6 flex items-center gap-8 pb-4 border-solid border-black border-b-[1px]'>
-                        <h1 className='text-[#fd0408] text-[22px] font-bold'><Link href={"/category/জাতীয়"}>{decodeURIComponent(params.category)}</Link></h1>
+
+                        <h1 className='text-[#fd0408] text-[22px] font-bold'>
+                            <Link href={`/category/${params.category}`}>{decodeURIComponent(params.category)}</Link>
+                        </h1>
+
+                        {/* ---------subcategory---- */}
                         <ul className='flex items-center'>
                             {subCategories.map((subCategory, i) => (
                                 <li

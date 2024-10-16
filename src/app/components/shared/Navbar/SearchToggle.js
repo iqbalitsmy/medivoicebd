@@ -47,7 +47,7 @@ const SearchToggle = () => {
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
             {/* for shadow */}
-            <div className={`fixed inset-0 bg-black w-full min-h-full mx-auto transition-all duration-200 ${isSearchOpen ? "opacity-20 z-40" : "opacity-0 -z-50"}`}
+            <div className={`bg-black mx-auto transition-all duration-200 ${isSearchOpen ? "opacity-20 z-40 inset-0 w-full min-h-full fixed" : "opacity-0 -z-50 w-0 min-h-0 w-0"}`}
             >
             </div>
 

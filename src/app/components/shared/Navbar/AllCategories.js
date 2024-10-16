@@ -17,7 +17,6 @@ const AllCategories = ({ categories }) => {
         }
         return;
     };
-    console.log(categories);
 
     // Add event listener for clicks outside
     useEffect(() => {
@@ -44,7 +43,7 @@ const AllCategories = ({ categories }) => {
             </button>
 
             {/* for shadow */}
-            <div className={`fixed inset-0 bg-black w-full min-h-full mx-auto transition-all ${isMenuOpen ? "opacity-20 z-20" : "opacity-0 -z-50"}`}
+            <div className={`fixed bg-black mx-auto transition-all ${isMenuOpen ? "opacity-20 z-20 inset-0 w-full min-h-full" : "opacity-0 -z-50"}`}
             >
             </div>
             {/* Dropdown Menu */}
@@ -86,7 +85,7 @@ const AllCategories = ({ categories }) => {
                                     </li>
                                 ))
                             }
-                            <li>
+                            {/* <li>
                                 <a href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</a>
                             </li>
                             <li>
@@ -109,7 +108,7 @@ const AllCategories = ({ categories }) => {
                             </li>
                             <li>
                                 <a href="/category/চাকরি" className="hover:text-red-600">চাকরি</a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
