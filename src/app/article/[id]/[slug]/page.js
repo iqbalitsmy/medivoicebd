@@ -167,11 +167,6 @@ const ArticlePage = async ({ params }) => {
                                 />
                             ))
                         }
-                        {
-                            Array.from({ length: 6 }).map((_, index) => (
-                                <MiniNewsCard key={index} />
-                            ))
-                        }
                     </div>
                 </div>
             </div>
