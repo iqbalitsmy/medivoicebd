@@ -9,23 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React from 'react';
 
-const person = {
-    name: "নিশাত তাসনীম স্বস্তি",
-    image: "/images/person/nishat-tasnim.jpg",
-    occupation: "শিক্ষার্থী",
-    organization: "সোহরাওয়ার্দী মেডিকেল কলেজ",
-}
+
 const title = 'Check out this awesome article!';
-
-const events = [
-    { date: '৩১ আগস্ট, ২০২৪', title: 'তোমাদের স্বাধীনতায়' },
-    { date: '২৮ মার্চ, ২০২৪', title: 'কপোতাক্ষ এক প্রেমিকের নাম' },
-    { date: '২৭ আগস্ট, ২০২৩', title: 'স্বাগতম যুবতী, স্বাগতম কমরেড' },
-    { date: '৩০ জুলাই, ২০২৩', title: 'বেঁচে থাকো' },
-    { date: '২০ ফেব্রুয়ারি, ২০২২', title: 'বইমেলায় ডা. আকনের নবম কবিতার বই “নীলাঞ্জনা ও একটি জোনাকির রাত”' },
-    { date: '১৫ জুন, ২০২০', title: 'কবি বিজেন্দ্র লালের নন্দলাল যখন ‘ডাক্তার নন্দলাল’' },
-];
-
 
 const ArticlePage = async ({ params }) => {
     const { id, slug } = params;
@@ -48,7 +33,10 @@ const ArticlePage = async ({ params }) => {
                         {/* title */}
                         <h1 className='text-[32px] font-bold'>{articleData.title}</h1>
                         {/* image */}
-                        <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={800} alt={articleData.title} />
+                        <Image src={`/images/news/clinical-psychology.jpg`} height={400} width={800} alt={articleData.title} />
+                        {/* image */}
+                        {/* <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={800} alt={articleData.title} /> */}
+
                         {/* image caption */}
                         <figcaption className='italic'>ছবি: {articleData.image_caption}</figcaption>
                     </div>
