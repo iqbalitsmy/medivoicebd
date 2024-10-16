@@ -1,7 +1,17 @@
+import { getData } from '@/app/utils/getData';
 import Image from 'next/image';
 import React from 'react';
 
-const Footer = () => {
+const Footer = async () => {
+    const { data } = await getData("https://api.medivoicebd.com/footer-details");
+
+    if (!data) {
+        return (
+            <footer className="text-white pt-6 text-center">
+                <p>Loading footer...</p> {/* Simple loading state */}
+            </footer>
+        );
+    }
     return (
         <footer className="text-white pt-6 text-center">
             <div className="bg-[#e6e7e9] grid place-content-center py-2">
@@ -26,18 +36,23 @@ const Footer = () => {
                 <hr className="border-white border-dashed w-full my-4" />
                 {/* Contact Information */}
                 <div className="container mx-auto grid place-content-center text-center">
+                    <div
+                        dangerouslySetInnerHTML={{ __html: data }}
+                    />
+                </div>
+                {/* <div className="container mx-auto grid place-content-center text-center">
                     <div className="text-lg font-medium">
                         <p>বার্তা কক্ষ: <a href="tel:01870211288">০১৮৭০ ২১১ ২৮৮</a></p>
                         <p className='mb-4'>বার্তা সম্পাদক: <a href="tel:01639318319">০১৬৩৯ ৩১৮ ৩১৯</a></p>
                         <p>ই-মেইল: <a href="mailto:medivoice.2014@gmail.com" className="text-blue-400">medivoice.2014@gmail.com</a></p>
                     </div>
 
-                    {/* Disclaimer */}
+                    Disclaimer
                     <p className="mt-4">
                         স্বত্বাধিকারী কর্তৃক <a href="medivoicebd.com" className="text-blue-400">medivoicebd.com</a> এর সর্বস্বত্ব সংরক্ষিত।
                         এই ওয়েবসাইটের কোনো লেখা, ছবি, ভিডিও অনুমতি ছাড়া ব্যবহার বেআইনি।
                     </p>
-                </div>
+                </div> */}
             </div>
         </footer>
     );

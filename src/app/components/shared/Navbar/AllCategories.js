@@ -7,17 +7,17 @@ import React, { useEffect, useState } from 'react';
 import SearchToggle from './SearchToggle';
 import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
-const AllCategories = () => {
+const AllCategories = ({ categories }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     const handleClickOutside = (event) => {
-            if (!event.target.closest(".menu-open")) {
-                console.log(".menu-open")
-                setIsMenuOpen(false);
-            }
-            return;
-        };
+        if (!event.target.closest(".menu-open")) {
+            setIsMenuOpen(false);
+        }
+        return;
+    };
+    console.log(categories);
 
     // Add event listener for clicks outside
     useEffect(() => {
@@ -26,6 +26,14 @@ const AllCategories = () => {
             window.removeEventListener("click", handleClickOutside);
         };
     }, []);
+
+    if (!categories) {
+        return (
+            <div className="text-white pt-6 text-center">
+                <p>Loading categories...</p>
+            </div>
+        );
+    }
 
     return (
         <>
@@ -71,6 +79,13 @@ const AllCategories = () => {
                     {/* Links */}
                     <div className="m-4 container max-w-[1170px] mx-auto">
                         <ul className='grid justify-center grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-center text-lg gap-2 lg:gap-4'>
+                            {
+                                categories.map((category, i) => (
+                                    <li key={i}>
+                                        <a href={`/category/${category.category_url}`} className="hover:text-red-600">{category.category}</a>
+                                    </li>
+                                ))
+                            }
                             <li>
                                 <a href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</a>
                             </li>

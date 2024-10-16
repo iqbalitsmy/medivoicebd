@@ -25,7 +25,6 @@ const SearchToggle = () => {
     // handle drawer click outside
     const handleTopInputClickOutside = (event) => {
         if (!event.target.closest(".top-search-input")) {
-            console.log("top-search-input 2")
             setIsSearchOpen(false);
         }
         return;

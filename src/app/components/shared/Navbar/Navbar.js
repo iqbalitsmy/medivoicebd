@@ -6,8 +6,18 @@ import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import MenuDrawer from './MenuDrawer';
 import Link from 'next/link';
+import { getData } from '@/app/utils/getData';
 
-const Navbar = () => {
+const Navbar = async () => {
+  const categories = await getData("https://api.medivoicebd.com/categories");
+
+  if (!categories) {
+    return (
+      <div className="text-white pt-6 text-center">
+        <p>Loading categories...</p>
+      </div>
+    );
+  }
 
   return (
     <nav
@@ -29,16 +39,21 @@ const Navbar = () => {
         <div className='hidden md:flex items-center justify-between'>
           {/* Links */}
           <div className="flex items-center lg:text-lg md:text-base gap-2 lg:gap-4">
-            <Link href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
+            {
+              categories.slice(0, 7).map((category, i) => (
+                <Link key={i} href={`/category/${category.category_url}`} className="hover:text-red-600">{category.category}</Link>
+              ))
+            }
+            {/* <Link href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
             <Link href="/category/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
             <Link href="/category/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
             <Link href="/category/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
             <Link href="/category/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
             <Link href="/category/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
             <Link href="/category/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
-            <Link href="/category/চাকরি" className="hover:text-red-600">চাকরি</Link>
+            <Link href="/category/চাকরি" className="hover:text-red-600">চাকরি</Link> */}
             {/* Menu & Search Toggle (Client Components) */}
-            <AllCategories />
+            <AllCategories categories={categories} />
             <SearchToggle /> {/* Search Toggle Client Component */}
           </div>
 
