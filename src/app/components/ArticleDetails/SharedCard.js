@@ -7,6 +7,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const PersonDetailsCard = ({ person = {}, publishDate }) => {
+    // console.log(person.name)
     const handleShare = (platform) => {
         const url = window.location.href; // Current page URL
         const title = document.title; // Page title
@@ -37,30 +38,36 @@ const PersonDetailsCard = ({ person = {}, publishDate }) => {
     };
 
     return (
-        <div className="border rounded-md p-2 text-center">
+        <div className="border rounded-md p-2 text-left">
             {/* Conditionally Render Person Info */}
             {person.name && (
                 <>
                     <Image
-                        className="rounded-full mx-auto mb-4"
+                        className="rounded-full mx-auto mb-4 object-contain"
                         src={person.image}
                         alt={person.name}
                         width={100}
-                        height={100}
+                        height={150}
                     />
-                    <h3 className="text-lg font-bold">{<a href="">{person.name}</a>}</h3>
-                    <p className="text-sm">{person.occupation}</p>
-                    <p className="text-sm">{person.organization}</p>
+                    <h3 className="text-lg font-bold">
+                        <a href="/writer/1019/ডা-মোহাম্মদ-জাহিদ-হাসান">{person.name}</a>
+                    </h3>
+                    <div
+                        className='text-[13px]'
+                        dangerouslySetInnerHTML={{ __html: person.details }}
+                    >
+
+                    </div>
                 </>
             )
             }
 
             {/* Static Date */}
-            <p className="text-lg mb-2">{publishDate || '31 August, 2024 10:16 AM'}</p>
+            <p className="text-sm mb-2">{publishDate || '31 August, 2024 10:16 AM'}</p>
             <div className="border-t border-gray-200 my-2"></div>
 
             {/* Social Media Buttons */}
-            <div className="flex flex-wrap justify-center items-center gap-2">
+            <div className="flex flex-wrap justify-center items-center gap-1">
                 <button
                     className="p-2 px-[10px] rounded-full bg-blue-600 text-white hover:bg-blue-700 grid place-content-center"
                     onClick={() => handleShare('facebook')}

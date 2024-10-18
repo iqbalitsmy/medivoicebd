@@ -16,13 +16,21 @@ const ArticlePage = async ({ params }) => {
     const { id, slug } = params;
     const { articleData, nextNews, previousNews, streamData, streamRows, readMoreNews } = await getData(`https://api.medivoicebd.com/article/${id}`);
 
-
     return (
         <div className='flex flex-wrap'>
             {/* person information */}
-            <aside className='w-full md:w-1/4 px-4'>
+            <aside className='w-full md:w-1/4 pr-2'>
                 {/* ------shared option------ */}
-                <PersonDetailsCard person={{}} publishDate={`${convertToBengaliDate(articleData.date)} ${convertToBengaliTime(articleData.time)}`} />
+                <PersonDetailsCard 
+                person={{
+                    id: articleData.writer_id,
+                    // url: articleData.writer_name,
+                    name: articleData.writer_name,
+                    image: `https://medivoicebd.com/uploads/${articleData.writer_image}`,
+                    details: articleData.writer_details,
+                }} 
+                publishDate={`${convertToBengaliDate(articleData.date)} ${convertToBengaliTime(articleData.time)}`} 
+                />
             </aside>
             {/* article */}
             <div className='w-full md:w-3/4 px-4 grid gap-4'>
@@ -32,8 +40,6 @@ const ArticlePage = async ({ params }) => {
                         <h6 className='text-xs text-[#1a0dab]'>{articleData.small_title}</h6>
                         {/* title */}
                         <h1 className='text-[32px] font-bold'>{articleData.title}</h1>
-                        {/* image */}
-                        {/* <Image src={`/images/news/clinical-psychology.jpg`} height={400} width={540} alt={articleData.title} /> */}
                         {/* image */}
                         <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={530} alt={articleData.title} />
 

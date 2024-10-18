@@ -19,7 +19,7 @@ const ArticleLayout = async ({ children, params }) => {
                 <meta name="description" content={articleData.meta_description} />
                 <meta name="keywords" content={articleData.meta_keyword} />
             </Head>
-            <section className='container max-w-[1170px] min-h-screen mx-auto px-4'>
+            <section className='container max-w-[1170px] min-h-screen mx-auto px-4 md:px-2'>
                 {/* navigation */}
                 <div className='w-full'>
                     {

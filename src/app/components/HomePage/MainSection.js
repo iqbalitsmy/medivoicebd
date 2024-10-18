@@ -16,7 +16,7 @@ const MainSection = async () => {
     const newsData = await Promise.all(newsPromises);
 
     return (
-        <div className='w-full md:w-2/3 md:pr-8'>
+        <div className='w-full md:w-2/3 md:pr-5'>
             {/* --------- banner image------- */}
             <figure className='mb-4'>
                 <a href="">

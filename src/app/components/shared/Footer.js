@@ -18,7 +18,9 @@ const Footer = async () => {
     return (
         <footer className="text-white pt-6 text-center">
             <div className="bg-[#e6e7e9] grid place-content-center py-2">
-                <Image src="/images/logo/logo.png" alt="Logo" width={150} height={50} />
+                <a href="/">
+                    <Image src="/images/logo/logo.png" alt="Logo" width={150} height={50} />
+                </a>
             </div>
             <div className='bg-black py-4 pb-6 px-4'>
                 {

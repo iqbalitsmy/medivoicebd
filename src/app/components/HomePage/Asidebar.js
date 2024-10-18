@@ -42,8 +42,9 @@ const Asidebar = () => {
             {/* facebook page */}
             <div className='mb-6'>
                 <iframe
+                    className='w-full'
                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedivoicebd&tabs=page&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-                    width="340"
+                    width="250"
                     height="130"
                     style={{ border: 'none', overflow: 'hidden' }} // Style updated for JSX
                     scrolling="no"

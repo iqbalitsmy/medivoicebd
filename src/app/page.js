@@ -5,7 +5,7 @@ import MainSection from "./components/HomePage/MainSection";
 export default async function Home() {
 
   return (
-    <div className="min-h-screen px-4">
+    <div className="min-h-screen px-4 md:px-2">
       <section className="max-w-[1170px] mx-auto">
         <CalenderDate />
         <Headlines  />

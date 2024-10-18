@@ -3,7 +3,7 @@ import React from 'react';
 
 const WriterLayout = ({ children }) => {
     return (
-        <section className='container mx-auto max-w-[1170px] min-h-screen flex gap-y-4 flex-wrap px-4 mt-6'>
+        <section className='container mx-auto max-w-[1170px] min-h-screen flex gap-y-4 flex-wrap px-4 md:px-2 mt-6'>
             <aside className='w-full md:w-2/3 md:pr-4'>
                 {children}
             </aside>

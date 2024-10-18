@@ -36,7 +36,7 @@ const Category = async ({ params }) => {
                                     key={index}
                                     title={news.title}
                                     small_title={news.small_title}
-                                    image={`https://medivoicebd.com/${news.image}`}
+                                    image={`https://medivoicebd.com/${news?.image}`}
                                     news_url={`/article/${news.id}/${news.news_url}`}
                                 />
                             ))
@@ -59,7 +59,7 @@ const Category = async ({ params }) => {
                                                 key={index}
                                                 title={newsRow.title}
                                                 small_title={newsRow.small_title}
-                                                image={`https://medivoicebd.com/${newsRow.image}`}
+                                                image={`https://medivoicebd.com/${newsRow?.image}`}
                                                 news_url={`/article/${newsRow.id}/${newsRow.news_url}`}
                                             />
                                         )

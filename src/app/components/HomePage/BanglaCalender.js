@@ -2,10 +2,27 @@
 
 import React, { useState } from 'react';
 
+// Helper function to convert numbers to Bengali
+const convertToBanglaNumber = (num) => {
+  const banglaNumbers = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+  return num.toString().split('').map(digit => banglaNumbers[parseInt(digit)]).join('');
+};
+
+// Get current date for comparison
+const currentDate = new Date();
+const isFutureDate = (year, month, day) => {
+  const date = new Date(year, month, day);
+  return date > currentDate;
+};
+
 const BanglaCalendar = () => {
+// Get current year and month
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth();
+
   // State for selected month and year
-  const [selectedMonth, setSelectedMonth] = useState(3); // Default to April (index 3)
-  const [selectedYear, setSelectedYear] = useState(2024);
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth); // Default to April (index 3)
+  const [selectedYear, setSelectedYear] = useState(currentYear);
 
   // Bengali days and months
   const banglaDays = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'];
@@ -30,10 +47,18 @@ const BanglaCalendar = () => {
 
     // Fill in the actual days
     for (let i = 1; i <= daysInMonth; i++) {
+      const isFuture = isFutureDate(selectedYear, selectedMonth, i);
+
       calendar.push(
-        <div key={i} className="h-10 bg-gray-100 flex items-center justify-center border">
-          {i}
-        </div>
+        <a
+          key={i}
+          href=""
+          className={isFuture ? "pointer-events-none" : ""}
+        >
+          <div className={`h-10 hover:bg-gray-50 flex items-center justify-center border ${isFuture ? "bg-gray-200" : "bg-gray-100"}`}>
+            {convertToBanglaNumber(i)}
+          </div>
+        </a>
       );
     }
 
@@ -65,7 +90,7 @@ const BanglaCalendar = () => {
             const year = 2020 + i;
             return (
               <option key={year} value={year}>
-                {year}
+                {convertToBanglaNumber(year)}
               </option>
             );
           })}
