@@ -35,7 +35,7 @@ const ArticlePage = async ({ params }) => {
                         {/* image */}
                         {/* <Image src={`/images/news/clinical-psychology.jpg`} height={400} width={540} alt={articleData.title} /> */}
                         {/* image */}
-                        <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={540} alt={articleData.title} />
+                        <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={530} alt={articleData.title} />
 
                         {/* image caption */}
                         <figcaption className='italic'>ছবি: {articleData.image_caption}</figcaption>
@@ -150,7 +150,7 @@ const ArticlePage = async ({ params }) => {
                                     key={index}
                                     title={news.title}
                                     small_title={news.small_title}
-                                    image={`https://medivoicebd.com/${news.image}`}
+                                    image={`https://medivoicebd.com/${news?.image}`}
                                     news_url={`/article/${news.id}/${news.news_url}`}
                                 />
                             ))

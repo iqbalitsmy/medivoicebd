@@ -8,7 +8,7 @@ import MenuDrawer from './MenuDrawer';
 import Link from 'next/link';
 import { getData } from '@/app/utils/getData';
 
-const Navbar = async () => {
+const Navbar = async ({ defaultConfig }) => {
   const categories = await getData("https://api.medivoicebd.com/categories");
 
   if (!categories) {
@@ -44,14 +44,6 @@ const Navbar = async () => {
                 <Link key={i} href={`/category/${category.category_url}`} className="hover:text-red-600">{category.category}</Link>
               ))
             }
-            {/* <Link href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
-            <Link href="/category/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
-            <Link href="/category/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
-            <Link href="/category/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
-            <Link href="/category/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
-            <Link href="/category/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
-            <Link href="/category/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
-            <Link href="/category/চাকরি" className="hover:text-red-600">চাকরি</Link> */}
             {/* Menu & Search Toggle (Client Components) */}
             <AllCategories categories={categories} />
             <SearchToggle /> {/* Search Toggle Client Component */}
@@ -59,10 +51,18 @@ const Navbar = async () => {
 
           {/* Social Icons (shown on desktop) */}
           <div className="hidden md:flex flex-col lg:flex-row gap-[2px] lg:gap-2 justify-center items-center">
-            <FontAwesomeIcon icon={faFacebookF} className="text-gray-600 hover:text-blue-600 cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
-            <FontAwesomeIcon icon={faXTwitter} className="text-gray-600 hover:text-black cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
-            <FontAwesomeIcon icon={faYoutube} className="text-gray-600 hover:text-red-600 cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
-            <FontAwesomeIcon icon={faEnvelope} className="text-gray-600 hover:text-black cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
+            <a target='_blank' href={defaultConfig.facebook_link}>
+              <FontAwesomeIcon icon={faFacebookF} className="text-gray-600 hover:text-blue-600 cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
+            </a>
+            <a target='_blank' href={defaultConfig.twitter_link}>
+              <FontAwesomeIcon icon={faXTwitter} className="text-gray-600 hover:text-black cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
+            </a>
+            <a target='_blank' href={defaultConfig.youtube_link}>
+              <FontAwesomeIcon icon={faYoutube} className="text-gray-600 hover:text-red-600 cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
+            </a>
+            <a href={`mailto:${defaultConfig.company_email}`}>
+              <FontAwesomeIcon icon={faEnvelope} className="text-gray-600 hover:text-black cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
+            </a>
           </div>
         </div>
       </div>

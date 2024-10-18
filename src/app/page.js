@@ -2,10 +2,7 @@ import Asidebar from "./components/HomePage/Asidebar";
 import CalenderDate from "./components/HomePage/CalenderDate";
 import Headlines from "./components/HomePage/Headlines";
 import MainSection from "./components/HomePage/MainSection";
-import { getData } from "./utils/getData";
-
 export default async function Home() {
-  // const headlines = await getData("https://api.medivoicebd.com/latest-news");
 
   return (
     <div className="min-h-screen px-4">

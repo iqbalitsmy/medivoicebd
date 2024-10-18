@@ -11,15 +11,9 @@ const kironSans = localFont({
   variable: "--font-kiron-sans",
 });
 
-// export const metadata = {
-//   title: "medivoicebd.com - বাংলাদেশের স্বাস্থ্যখাত মুখপত্র",
-//   description: "medivoicebd.com - বাংলাদেশের স্বাস্থ্যখাত মুখপত্র",
-//   keywords: "মেডিভয়েস",
-// };
-
 export default async function RootLayout({ children }) {
   // Fetching the default configuration data
-  const defaultConfig = await getData("https://api.medivoicebd.com/categories");
+  const defaultConfig = await getData("https://api.medivoicebd.com/config-variable");
 
   // Fallback if no config data is fetched
   if (!defaultConfig) {
@@ -62,11 +56,11 @@ export default async function RootLayout({ children }) {
         <meta property="og:youtube" content={youtube_link} />
       </Head>
       <body className={`${kironSans.variable} font-sans antialiased`}>
-        <header className="mb-24 md:mb-36 lg:mb-24">
+        <header className="mb-24 md:mb-40 lg:mb-24">
           <Navbar defaultConfig={defaultConfig} />
         </header>
         <main>{children}</main>
-        <Footer defaultConfig={defaultConfig} />
+        <Footer />
         <ScrollToTopButton />
       </body>
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0"></script>

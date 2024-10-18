@@ -1,17 +1,29 @@
+import { getData } from '@/app/utils/getData';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React from 'react';
 
-const MainSection = () => {
+const MainSection = async () => {
+    const categories = await getData("https://api.medivoicebd.com/categories");
+
+    // Use Promise.all to fetch category-specific news in parallel
+    const newsPromises = categories.slice(0, 6).map(category =>
+        getData(`https://api.medivoicebd.com/category-news?categoryUrl=${category.category_url}`)
+    );
+
+    // Wait for all the requests to complete
+    const newsData = await Promise.all(newsPromises);
+
     return (
         <div className='w-full md:w-2/3 md:pr-8'>
             {/* --------- banner image------- */}
             <figure className='mb-4'>
                 <a href="">
-                    <Image src={"/images/banner/banner-ad-medivoice-health.jpg"} height={450} width={3600} alt='banner ad medivoice health' />
+                    <Image className='w-full' src={"/images/banner/banner-ad-medivoice-health.jpg"} height={200} width={600} alt='banner ad medivoice health' />
                 </a>
             </figure>
+            {/* -------main news------- */}
             <div className='flex flex-wrap mx-auto'>
                 <div className='mx-auto w-full md:w-7/12 pb-4 md:pb-0 md:pr-4'>
                     {/* first news card */}
@@ -140,95 +152,45 @@ const MainSection = () => {
             {/* --------banner 2 image----------- */}
             <figure className='pt-8'>
                 <a href="">
-                    <Image src={"/images/banner/banner-ad-medivoice-health.jpg"} height={450} width={3600} alt='banner ad medivoice health' />
+                    <Image className='w-full' src={"/images/banner/banner-ad-medivoice-health.jpg"} height={200} width={600} alt='banner ad medivoice health' />
                 </a>
             </figure>
-            {/* categories news list */}
+            {/* -------- categories news list------- */}
             <div className="grid gap-6 justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 py-4">
-                {/* National Section */}
-                <div className="p-1">
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">জাতীয়</h2>
-                    <div className='grid gap-2'>
-                        <Image src="/images/news/clinical-psychology.jpg" alt="National News" width={400} height={200} className="" />
-                        <p className='text-lg font-bold leading-5 hover:text-[#d84315]'><a href="">‘মানসিক স্বাস্থ্যের বাইরে দেশের ৯২ শতাংশ মানুষ’</a></p>
-                    </div>
-                    <ul className="mt-4 grid gap-[1px] bg-gray-100">
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">চাকরিতে প্রবেশিকা: পুরুষের ৯২, নারীর ৩৭ করায় সুপারিশ</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">ডেঙ্গু একদিনে সর্বোচ্চ মরণ, মৃত্যু, আক্রান্ত আর ৯</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">জন-জগত আন্দোলন:  &#34;এটি হবে আন্দোলনের একটি অধ্যায়&#34;</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">‘দুই লোক সব জায়গায় থাকে, তারা চেষ্টা করে অকারণ ঘটানোর’</a></li>
-                    </ul>
-                </div>
-                {/* National Section */}
-                <div className="p-1">
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">জাতীয়</h2>
-                    <div className='grid gap-2'>
-                        <Image src="/images/news/clinical-psychology.jpg" alt="National News" width={400} height={200} className="" />
-                        <p className='text-lg font-bold leading-5 hover:text-[#d84315]'><a href="">‘মানসিক স্বাস্থ্যের বাইরে দেশের ৯২ শতাংশ মানুষ’</a></p>
-                    </div>
-                    <ul className="mt-4 grid gap-[1px] bg-gray-100">
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">চাকরিতে প্রবেশিকা: পুরুষের ৯২, নারীর ৩৭ করায় সুপারিশ</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">ডেঙ্গু একদিনে সর্বোচ্চ মরণ, মৃত্যু, আক্রান্ত আর ৯</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">জন-জগত আন্দোলন: &quot;এটি হবে আন্দোলনের একটি অধ্যায়&quot;</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">‘দুই লোক সব জায়গায় থাকে, তারা চেষ্টা করে অকারণ ঘটানোর’</a></li>
-                    </ul>
-                </div>
-                {/* National Section */}
-                <div className="p-1">
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">জাতীয়</h2>
-                    <div className='grid gap-2'>
-                        <Image src="/images/news/clinical-psychology.jpg" alt="National News" width={400} height={200} className="" />
-                        <p className='text-lg font-bold leading-5 hover:text-[#d84315]'><a href="">‘মানসিক স্বাস্থ্যের বাইরে দেশের ৯২ শতাংশ মানুষ’</a></p>
-                    </div>
-                    <ul className="mt-4 grid gap-[1px] bg-gray-100">
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">চাকরিতে প্রবেশিকা: পুরুষের ৯২, নারীর ৩৭ করায় সুপারিশ</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">ডেঙ্গু একদিনে সর্বোচ্চ মরণ, মৃত্যু, আক্রান্ত আর ৯</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">জন-জগত আন্দোলন:  &#34;এটি হবে আন্দোলনের একটি অধ্যায়&#34;</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">‘দুই লোক সব জায়গায় থাকে, তারা চেষ্টা করে অকারণ ঘটানোর’</a></li>
-                    </ul>
-                </div>
-                {/* National Section */}
-                <div className="p-1">
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">জাতীয়</h2>
-                    <div className='grid gap-2'>
-                        <Image src="/images/news/clinical-psychology.jpg" alt="National News" width={400} height={200} className="" />
-                        <p className='text-lg font-bold leading-5 hover:text-[#d84315]'><a href="">‘মানসিক স্বাস্থ্যের বাইরে দেশের ৯২ শতাংশ মানুষ’</a></p>
-                    </div>
-                    <ul className="mt-4 grid gap-[1px] bg-gray-100">
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">চাকরিতে প্রবেশিকা: পুরুষের ৯২, নারীর ৩৭ করায় সুপারিশ</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">ডেঙ্গু একদিনে সর্বোচ্চ মরণ, মৃত্যু, আক্রান্ত আর ৯</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">জন-জগত আন্দোলন:  &#34;এটি হবে আন্দোলনের একটি অধ্যায়&#34;</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">‘দুই লোক সব জায়গায় থাকে, তারা চেষ্টা করে অকারণ ঘটানোর’</a></li>
-                    </ul>
-                </div>
-                {/* National Section */}
-                <div className="p-1">
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">জাতীয়</h2>
-                    <div className='grid gap-2'>
-                        <Image src="/images/news/clinical-psychology.jpg" alt="National News" width={400} height={200} className="" />
-                        <p className='text-lg font-bold leading-5 hover:text-[#d84315]'><a href="">‘মানসিক স্বাস্থ্যের বাইরে দেশের ৯২ শতাংশ মানুষ’</a></p>
-                    </div>
-                    <ul className="mt-4 grid gap-[1px] bg-gray-100">
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">চাকরিতে প্রবেশিকা: পুরুষের ৯২, নারীর ৩৭ করায় সুপারিশ</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">ডেঙ্গু একদিনে সর্বোচ্চ মরণ, মৃত্যু, আক্রান্ত আর ৯</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">জন-জগত আন্দোলন:  &#34;এটি হবে আন্দোলনের একটি অধ্যায়&#34;</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">‘দুই লোক সব জায়গায় থাকে, তারা চেষ্টা করে অকারণ ঘটানোর’</a></li>
-                    </ul>
-                </div>
-                {/* National Section */}
-                <div className="p-1">
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">জাতীয়</h2>
-                    <div className='grid gap-2'>
-                        <Image src="/images/news/clinical-psychology.jpg" alt="National News" width={400} height={200} className="" />
-                        <p className='text-lg font-bold leading-5 hover:text-[#d84315]'><a href="">‘মানসিক স্বাস্থ্যের বাইরে দেশের ৯২ শতাংশ মানুষ’</a></p>
-                    </div>
-                    <ul className="mt-4 grid gap-[1px] bg-gray-100">
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">চাকরিতে প্রবেশিকা: পুরুষের ৯২, নারীর ৩৭ করায় সুপারিশ</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">ডেঙ্গু একদিনে সর্বোচ্চ মরণ, মৃত্যু, আক্রান্ত আর ৯</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">জন-জগত আন্দোলন:  &#34;এটি হবে আন্দোলনের একটি অধ্যায়&#34;</a></li>
-                        <li className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} /> <a className='hover:text-[#d84315]' href="">‘দুই লোক সব জায়গায় থাকে, তারা চেষ্টা করে অকারণ ঘটানোর’</a></li>
-                    </ul>
-                </div>
+                {
+                    newsData && (
+                        newsData.map(({ leadNews }, i) => (
+                            <div key={i} className="p-1">
+                                {/* -----category title----- */}
+                                <h2 className="border-solid border-l-[3px] border-[#d84315] text-[22px] mb-4 pl-4">{categories[i].category}</h2>
+                                {/* first news */}
+                                <div className='grid gap-2'>
+                                    <Image src={`https://medivoicebd.com/${leadNews[0].image}`} alt="National News" width={160} height={80} className="w-full" />
+                                    <p 
+                                    className='text-lg font-bold leading-5 hover:text-[#d84315]'
+                                    >
+                                        <a href={`/article/${leadNews[0].id}/${leadNews[0].news_url}`}>{leadNews[0].title}</a>
+                                        </p>
+                                </div>
+                                {/* news list */}
+                                <ul className="mt-4 grid gap-[1px] bg-gray-100">
+                                    {
+                                        leadNews.slice(1, 5).map((leadNewsList, i) => (
+                                            <li key={i} className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} />
+                                                <a
+                                                    className='hover:text-[#d84315] pl-2'
+                                                    href={`/article/${leadNewsList.id}/${leadNewsList.news_url}`}
+                                                >
+                                                    {leadNewsList.title}
+                                                </a>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        ))
+                    )
+                }
             </div>
             {/* youtube video */}
             <div className='mb-4'>

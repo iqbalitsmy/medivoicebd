@@ -1,39 +1,51 @@
 import { getData } from '@/app/utils/getData';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Footer = async () => {
     const { data } = await getData("https://api.medivoicebd.com/footer-details");
+    const categories = await getData("https://api.medivoicebd.com/categories");
 
-    if (!data) {
+    if (!categories && data) {
         return (
-            <footer className="text-white pt-6 text-center">
-                <p>Loading footer...</p> {/* Simple loading state */}
-            </footer>
+            <div className="text-white pt-6 text-center">
+                <p>Loading footer...</p>
+            </div>
         );
     }
+
     return (
         <footer className="text-white pt-6 text-center">
             <div className="bg-[#e6e7e9] grid place-content-center py-2">
                 <Image src="/images/logo/logo.png" alt="Logo" width={150} height={50} />
             </div>
             <div className='bg-black py-4 pb-6 px-4'>
-                {/* content title */}
-                <div className='container mx-auto grid place-content-center'>
-                    <ul className="text-xl font-bold mb-2 text-center flex justify-center flex-wrap gap-2 md:gap-4">
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">জাতীয়</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">আন্তর্জাতিক</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">সাক্ষাৎকার</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">স্বাস্থ্য প্রশাসন</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">ক্যাম্পাস</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">এডু কর্ণার</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">স্বাস্থ্য</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">সম্পাদকীয়</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21]'><a href="">চাকরি</a></li>
-                        <li className='transition-colors hover:text-[#9b1f21] text-2xl'><a href="">সাইট ম্যাপ</a></li>
-                    </ul>
-                </div>
-                <hr className="border-white border-dashed w-full my-4" />
+                {
+                    categories && (
+                        <>
+                            {/* content title */}
+                            <div className='container mx-auto grid place-content-center'>
+                                <ul className="text-2xl mb-2 text-center flex justify-center flex-wrap gap-2 md:gap-4">
+                                    {
+                                        categories.slice(0, 9).map((category, i) => (
+                                            <li key={i} className='transition-colors hover:text-[#9b1f21]'>
+                                                <Link
+                                                    href={`/category/${category.category_url}`}
+                                                >
+                                                    {category.category}
+                                                </Link>
+                                            </li>
+
+                                        ))
+                                    }
+                                    <li className='transition-colors hover:text-[#9b1f21] text-3xl'><a href="">সাইট ম্যাপ</a></li>
+                                </ul>
+                            </div>
+                            <hr className="border-white border-dashed w-full my-4" />
+                        </>
+                    )
+                }
                 {/* Contact Information */}
                 <div className="container mx-auto grid place-content-center text-center">
                     <div

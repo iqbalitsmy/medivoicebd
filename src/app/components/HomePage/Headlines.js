@@ -68,7 +68,7 @@ const Headlines = () => {
                         headlines.map((headline, i) => (
                             <span key={headline.id} className='flex items-center hover:text-blue-800' >
                                 <Image src="/images/logo/favicon.png" alt="Logo" width={20} height={20} />
-                                <a className='mx-2' href={headline.url}>{headline.title}</a>
+                                <a className='mx-2' href={`article/${headline.id}/${headline.url}`}>{headline.title}</a>
                             </span>
                         ))
                     }

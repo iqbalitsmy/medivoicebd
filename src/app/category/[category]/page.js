@@ -1,102 +1,82 @@
 import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
+import { getData } from '@/app/utils/getData';
 import { faGreaterThan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Category = ({ params }) => {
+const Category = async ({ params }) => {
+
+    const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
+
+    const { leadNews, parentCategories } = categoriesNews;
+
     return (
         <div>
             {/* first news */}
+            {/* lead News */}
             <div className='mx-auto md:pr-6 mb-4'>
-                <Image className='mx-auto' src={"/images/news/clinical-psychology.jpg"} height={300} width={1000} alt='banner ad medivoice health' />
+                {/* image */}
+                <Image className='w-full' src={`https://medivoicebd.com/${leadNews[0].image}`} height={400} width={530} alt={leadNews[0].title} />
+                {/* title */}
                 <div className="text-[32px] font-bold leading-10 mt-4 mb-6">
-                    <h1 className='hover:text-[#d84315] cursor-pointer'><a href="">‘মানসিক স্বাস্থ্যসেবার বাইরে দেশের ৯২ শতাংশ মানুষ’</a></h1>
+                    <h1 className='hover:text-[#d84315] cursor-pointer'><a href={`/article/${leadNews[0].id}/${leadNews[0].news_url}`}>{leadNews[0].title}</a></h1>
                 </div>
                 <hr className='border-solid border-black border-0 border-b-[1px]' />
             </div>
             {/* নির্বাচিত section */}
             <div className='md:pr-6 mb-4'>
                 <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">নির্বাচিত</h2>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-1'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-2'>
                     {
-                        Array.from({ length: 6 }).map((_, index) => (
-                            <MiniNewsCard key={index} />
-                        ))
+                        leadNews && (
+                            leadNews.map((news, index) => (
+                                <MiniNewsCard
+                                    key={index}
+                                    title={news.title}
+                                    small_title={news.small_title}
+                                    image={`https://medivoicebd.com/${news.image}`}
+                                    news_url={`/article/${news.id}/${news.news_url}`}
+                                />
+                            ))
+                        )
                     }
                 </div>
             </div>
             {/* subcategory news */}
+            {/* parentCategories in api */}
             <div className='md:pr-6 grid gap-6'>
-                <div>
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">সরকার</h2>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-1'>
-                        {
-                            Array.from({ length: 3 }).map((_, index) => (
-                                <MiniNewsCard key={index} />
-                            ))
-                        }
-                    </div>
-                    <div className='text-end'>
-                        <Link className='font-thin text-[#d84315] hover:text-green-800 text-end' href={""}>
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                        </Link>
-                    </div>
-                </div>
-                <div>
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">জেলার খবর</h2>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-1'>
-                        {
-                            Array.from({ length: 3 }).map((_, index) => (
-                                <MiniNewsCard key={index} />
-                            ))
-                        }
-                    </div>
-                    <div className='text-end'>
-                        <Link className='font-thin text-[#d84315] hover:text-green-800 text-end' href={""}>
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                        </Link>
-                    </div>
-                </div>
-                <div>
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">স্পেশাল রিপোর্ট</h2>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-1'>
-                        {
-                            Array.from({ length: 3 }).map((_, index) => (
-                                <MiniNewsCard key={index} />
-                            ))
-                        }
-                    </div>
-                    <div className='text-end'>
-                        <Link className='font-thin text-[#d84315] hover:text-green-800 text-end' href={""}>
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                        </Link>
-                    </div>
-                </div>
-                <div>
-                    <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">অন্যান্য খবর</h2>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-1'>
-                        {
-                            Array.from({ length: 3 }).map((_, index) => (
-                                <MiniNewsCard key={index} />
-                            ))
-                        }
-                    </div>
-                    <div className='text-end'>
-                        <Link className='font-thin text-[#d84315] hover:text-green-800 text-end' href={""}>
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                            <FontAwesomeIcon icon={faGreaterThan} />
-                        </Link>
-                    </div>
-                </div>
+                {
+                    parentCategories && (parentCategories.map((parentCategory, i) => (
+                        <div key={i}>
+                            <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">{parentCategory.category}</h2>
+                            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-2'>
+                                {
+                                    (parentCategory.newsRows) && (
+                                        parentCategory.newsRows.map((newsRow, index) => (
+                                            <MiniNewsCard
+                                                key={index}
+                                                title={newsRow.title}
+                                                small_title={newsRow.small_title}
+                                                image={`https://medivoicebd.com/${newsRow.image}`}
+                                                news_url={`/article/${newsRow.id}/${newsRow.news_url}`}
+                                            />
+                                        )
+                                        ))
+                                }
+                            </div>
+                            <div className='text-end'>
+                                <Link className='font-thin text-[#d84315] hover:text-green-800 text-end' href={`/category/${params.category}/${parentCategory.category_url}`}>
+                                    <FontAwesomeIcon icon={faGreaterThan} />
+                                    <FontAwesomeIcon icon={faGreaterThan} />
+                                    <FontAwesomeIcon icon={faGreaterThan} />
+                                </Link>
+                            </div>
+                        </div>
+                    ))
+                    )
+                }
             </div>
         </div>
     );
