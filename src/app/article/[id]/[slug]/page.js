@@ -4,7 +4,7 @@ import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
 import convertToBengaliDate from '@/app/utils/convertToBengaliDate';
 import convertToBengaliTime from '@/app/utils/convertToBengaliTime';
 import { getData } from '@/app/utils/getData';
-import { faCaretRight, faPlay, faShare, faTag } from '@fortawesome/free-solid-svg-icons';
+import { faCaretRight, faShare, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React from 'react';
@@ -65,7 +65,7 @@ const ArticlePage = async ({ params }) => {
                     <div className='flex justify-between gap-6'>
                         {/* social share */}
                         <SocialShare title={title} />
-                        {/* tags */}
+                        {/* ------- tags------- */}
                         <div className="flex flex-wrap gap-2 text-lg">
                             {
                                 articleData.tags.map((tag, i) => (

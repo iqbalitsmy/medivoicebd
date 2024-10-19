@@ -11,6 +11,41 @@ const kironSans = localFont({
   variable: "--font-kiron-sans",
 });
 
+// The `generateMetadata` function allows you to dynamically set metadata.
+export async function generateMetadata() {
+  // Fetch your config data
+  const defaultConfig = await getData('https://api.medivoicebd.com/config-variable');
+
+  // Destructure the necessary metadata fields
+  const {
+    meta_title,
+    meta_description,
+    meta_keyword,
+    company_name,
+    facebook_app_id,
+    twitter_link,
+    facebook_link,
+    linkedin,
+    youtube_link,
+  } = defaultConfig || {};
+
+  // Return an object with all the meta tags
+  return {
+    title: meta_title || 'Default Title',
+    description: meta_description || 'Default Description',
+    keywords: meta_keyword || 'default,keywords',
+    openGraph: {
+      siteName: company_name || 'Default Company',
+      type: 'website',
+      twitter: twitter_link || 'https://twitter.com/default',
+      facebook: facebook_link || 'https://facebook.com/default',
+      linkedin: linkedin || 'https://linkedin.com/default',
+      youtube: youtube_link || 'https://youtube.com/default',
+    },
+    facebookAppId: facebook_app_id || '',
+  };
+}
+
 export default async function RootLayout({ children }) {
   // Fetching the default configuration data
   const defaultConfig = await getData("https://api.medivoicebd.com/config-variable");
@@ -26,35 +61,8 @@ export default async function RootLayout({ children }) {
     );
   }
 
-  const {
-    meta_title,
-    meta_description,
-    meta_keyword,
-    company_name,
-    facebook_app_id,
-    twitter_link,
-    facebook_link,
-    linkedin,
-    youtube_link,
-  } = defaultConfig;
-
-
   return (
     <html lang="en">
-      <Head>
-        {/* Dynamic Meta Tags */}
-        <title>{meta_title}</title>
-        <meta name="description" content={meta_description} />
-        <meta name="keywords" content={meta_keyword} />
-        {/* Facebook Meta Tag Example */}
-        <meta property="og:site_name" content={company_name} />
-        <meta property="fb:app_id" content={facebook_app_id} />
-        {/* Additional Social Media Links */}
-        <meta property="og:twitter" content={twitter_link} />
-        <meta property="og:facebook" content={facebook_link} />
-        <meta property="og:linkedin" content={linkedin} />
-        <meta property="og:youtube" content={youtube_link} />
-      </Head>
       <body className={`${kironSans.variable} font-sans antialiased`}>
         <header className="mb-24 md:mb-40 lg:mb-24">
           <Navbar defaultConfig={defaultConfig} />

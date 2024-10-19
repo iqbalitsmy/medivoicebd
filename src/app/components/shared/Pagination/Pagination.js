@@ -1,14 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-
-const Pagination = ({ currentPage, totalPages }) => {
-    const router = useRouter();
-
-    const goToPage = (page) => {
-        router.push(`?page=${page}`);
-    };
-
+const Pagination = ({ currentPage, totalPages, route }) => {
     const isFirstPage = currentPage === 1;
     const isLastPage = currentPage === totalPages;
 
@@ -23,45 +15,45 @@ const Pagination = ({ currentPage, totalPages }) => {
 
     return (
         <div className="flex items-center justify-center space-x-2 mt-4">
-            <button
-                onClick={() => goToPage(1)}
+            <a
+                href={route + 1}
                 disabled={isFirstPage}
                 className={`px-3 py-2 rounded ${isFirstPage ? 'bg-gray-200 text-gray-400' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'}`}
             >
                 First
-            </button>
-            <button
-                onClick={() => goToPage(currentPage - 1)}
+            </a>
+            <a
+                href={route + (currentPage - 1)}
                 disabled={isFirstPage}
                 className={`px-3 py-2 rounded ${isFirstPage ? 'bg-gray-200 text-gray-400' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'}`}
             >
                 &laquo;
-            </button>
+            </a>
 
             {pageNumbers.map((page) => (
-                <button
+                <a
                     key={page}
-                    onClick={() => goToPage(page)}
+                    href={route + (page)}
                     className={`px-3 py-2 rounded ${currentPage === page ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
                 >
                     {page}
-                </button>
+                </a>
             ))}
 
-            <button
-                onClick={() => goToPage(currentPage + 1)}
+            <a
+                href={route + (currentPage + 1)}
                 disabled={isLastPage}
                 className={`px-3 py-2 rounded ${isLastPage ? 'bg-gray-200 text-gray-400' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'}`}
             >
                 &raquo;
-            </button>
-            <button
-                onClick={() => goToPage(totalPages)}
+            </a>
+            <a
+                href={route + (totalPages)}
                 disabled={isLastPage}
                 className={`px-3 py-2 rounded ${isLastPage ? 'bg-gray-200 text-gray-400' : 'bg-gray-300 text-gray-800 hover:bg-gray-400'}`}
             >
                 Last
-            </button>
+            </a>
         </div>
     );
 };
