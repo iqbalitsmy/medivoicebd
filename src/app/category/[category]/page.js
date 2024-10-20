@@ -11,6 +11,7 @@ const Category = async ({ params }) => {
     const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
 
     const { leadNews, parentCategories } = categoriesNews;
+    console.log(parentCategories)
 
     return (
         <div>
@@ -21,7 +22,9 @@ const Category = async ({ params }) => {
                 <Image className='w-full' src={`https://medivoicebd.com/${leadNews[0].image}`} height={400} width={530} alt={leadNews[0].title} />
                 {/* title */}
                 <div className="text-[32px] font-bold leading-10 mt-4 mb-6">
-                    <h1 className='hover:text-[#d84315] cursor-pointer'><a href={`/article/${leadNews[0].id}/${leadNews[0].news_url}`}>{leadNews[0].title}</a></h1>
+                    <h1 className='hover:text-[#d84315] cursor-pointer'>
+                        <a href={`/article/${leadNews[0].id}/${leadNews[0].news_url}`}>{leadNews[0].title}</a>
+                        </h1>
                 </div>
                 <hr className='border-solid border-black border-0 border-b-[1px]' />
             </div>
@@ -50,8 +53,13 @@ const Category = async ({ params }) => {
                 {
                     parentCategories && (parentCategories.map((parentCategory, i) => (
                         <div key={i}>
-                            <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">{parentCategory.category}</h2>
-                            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-2'>
+                            <a 
+                            href={`/category/${params.category}/${parentCategory.category_url}`}
+                            className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4"
+                            >
+                            {parentCategory.category}
+                            </a>
+                            <div className='mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-2'>
                                 {
                                     (parentCategory.newsRows) && (
                                         parentCategory.newsRows.map((newsRow, index) => (

@@ -52,7 +52,7 @@ const currentMonth = currentDate.getMonth();
       calendar.push(
         <a
           key={i}
-          href=""
+          href={`/archive/${selectedYear}/${selectedMonth}/${i}`}
           className={isFuture ? "pointer-events-none" : ""}
         >
           <div className={`h-10 hover:bg-gray-50 flex items-center justify-center border ${isFuture ? "bg-gray-200" : "bg-gray-100"}`}>

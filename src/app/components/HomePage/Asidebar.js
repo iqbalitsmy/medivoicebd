@@ -55,7 +55,7 @@ const Asidebar = () => {
             </div>
             {/* calender */}
             <div>
-                <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">জাতীয়</h2>
+                <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-4 pl-4">আর্কাইভ</h2>
                 <BanglaCalendar />
             </div>
         </aside>

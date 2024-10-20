@@ -122,7 +122,7 @@ const ArticlePage = async ({ params }) => {
                 }
                 {/* -------news navigation------ */}
                 <div className="mt-8">
-                    <div className="text-center flex justify-between items-center gap-4">
+                    <div className="text-center grid grid-cols-2 justify-between items-center gap-6">
                         <h2 className="font-bold text-[28px]">
                             <a href={`/article/${previousNews.id}/${previousNews.url}`}>{previousNews.title}</a>
                         </h2>

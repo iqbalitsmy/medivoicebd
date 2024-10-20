@@ -1,6 +1,6 @@
 'use client';
 
-const Pagination = ({ currentPage, totalPages, route }) => {
+const Pagination = ({ currentPage, totalPages, route="" }) => {
     const isFirstPage = currentPage === 1;
     const isLastPage = currentPage === totalPages;
 
