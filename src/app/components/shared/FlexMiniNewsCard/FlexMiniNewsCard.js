@@ -14,9 +14,9 @@ const FlexMiniNewsCard = ({ newsDetails }) => {
                 className="w-20 h-16 object-cover"
             />
             {/* News Headline */}
-            <div className="leading-tight grid gap-1">
-                <p className='text-[9px] text-[#d84315]'>{small_title || "করোনা ও বার্ধক্যজনিত অসুস্থতা"}</p>
-                <h2 className="hover:text-[#d84315] cursor-pointer">
+            <div className="grid gap-1">
+                <p className='text-xs text-[#d84315]'>{small_title}</p>
+                <h2 className="leading-6 hover:text-[#d84315] cursor-pointer text-lg">
                     <a href={news_url}>
                         {title || "ছাত্র-জনতার আন্দোলনে আহতদের গণস্বাস্থ্যে পুনর্বাসন শুরু"}
                     </a>

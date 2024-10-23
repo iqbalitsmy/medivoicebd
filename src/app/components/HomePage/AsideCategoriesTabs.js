@@ -15,8 +15,8 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
     }
 
     return (
-        <Tabs defaultIndex={0} onSelect={handleTabsIndex}>
-            <TabList>
+        <Tabs className={"text-lg"} defaultIndex={0} onSelect={handleTabsIndex}>
+            <TabList className={"text-lg mb-4"}>
                 <Tab><a className={"cursor-pointer font-bold inline-block hover:text-[#008000]"}>সর্বশেষ</a></Tab>
                 <Tab><a className={"cursor-pointer font-bold inline-block hover:text-[#008000]"}>সর্বাধিক পঠিত</a></Tab>
                 <Tab><a className={"cursor-pointer font-bold inline-block hover:text-[#008000]"}>নির্বাচিত</a></Tab>
@@ -77,7 +77,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     {/* News Headline */}
                                     <div className="leading-tight">
                                         <p className="hover:text-[#d84315] cursor-pointer">
-                                        <a href={`/article/${popularNews[0].id}/${popularNews[0].news_url}`}>{popularNews[0].title}</a>
+                                            <a href={`/article/${popularNews[0].id}/${popularNews[0].news_url}`}>{popularNews[0].title}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     {/* News Headline */}
                                     <div className="leading-tight">
                                         <p className="hover:text-[#d84315] cursor-pointer">
-                                        <a href={`/article/${selectedNews[0].id}/${selectedNews[0].news_url}`}>{selectedNews[0].title}</a>
+                                            <a href={`/article/${selectedNews[0].id}/${selectedNews[0].news_url}`}>{selectedNews[0].title}</a>
                                         </p>
                                     </div>
                                 </div>

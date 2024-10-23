@@ -5,9 +5,9 @@ import React from 'react';
 
 const NewsLists = ({category, categoryUrl, news}) => {
     return (
-        <div className="p-1">
+        <div className="p-1 text-lg">
             {/* -----category title----- */}
-            <h2 className="border-solid border-l-[3px] hover:text-[#d84315] border-[#d84315] text-[22px] mb-4 pl-4"><a href={categoryUrl}>{category}</a></h2>
+            <h2 className="border-solid border-l-[3px] border-[#d84315] text-[22px] mb-4 pl-4"><a className='hover:text-[#d84315]' href={categoryUrl}>{category}</a></h2>
             {/* first news */}
             <div className='grid gap-2'>
                 <Image src={`https://medivoicebd.com/${news[0].image}`} alt="National News" width={160} height={80} className="w-full" />
@@ -21,7 +21,8 @@ const NewsLists = ({category, categoryUrl, news}) => {
             <ul className="mt-4 grid gap-[1px] bg-gray-100">
                 {
                     news.slice(1, 5).map((leadNewsList, i) => (
-                        <li key={i} className='bg-white py-2'><FontAwesomeIcon icon={faCaretRight} />
+                        <li key={i} className='bg-white py-2'>
+                            <FontAwesomeIcon icon={faCaretRight} />
                             <a
                                 className='hover:text-[#d84315] pl-2'
                                 href={`/article/${leadNewsList.id}/${leadNewsList.news_url}`}
