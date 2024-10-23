@@ -44,7 +44,7 @@ const Navbar = async ({ defaultConfig }) => {
               categories.slice(0, 7).map((category, i) => (
                 <NavLink
                   key={i}
-                  path={`/category/${category.category_url}`} className="hover:text-red-600"
+                  path={`/category/${category.category_url}`} 
                   title={category.category}
                 />
               ))

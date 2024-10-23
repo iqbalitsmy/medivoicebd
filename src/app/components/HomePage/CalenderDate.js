@@ -4,7 +4,7 @@ import React from 'react';
 
 const CalenderDate = () => {
     return (
-        <div className='container mx-auto mt-8 hidden lg:block mb-4'>
+        <div className='container mx-auto mt-6 hidden lg:block mb-3'>
             <span><FontAwesomeIcon icon={faLocationDot} /></span> ঢাকা <span className='pl-4'><FontAwesomeIcon icon={faCalendarDays} /></span>  শনিবার, ১২ অক্টোবর ২০২৪, ২৭ আশ্বিন ১৪৩১, ৭ রবিউস সানী ১৪৪৬
         </div>
     );

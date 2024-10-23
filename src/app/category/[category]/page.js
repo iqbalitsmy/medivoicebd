@@ -8,10 +8,11 @@ import React from 'react';
 
 const Category = async ({ params }) => {
 
-    const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
+    const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=%E0%A6%8F%E0%A6%A1%E0%A7%81-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A8%E0%A6%BE%E0%A6%B0`);
+    // const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
 
-    const { leadNews, parentCategories } = categoriesNews;
-    // console.log(parentCategories)
+    const { leadNews, newsRows } = categoriesNews;
+    console.log(categoriesNews)
 
     return (
         <div>
@@ -24,7 +25,7 @@ const Category = async ({ params }) => {
                 <div className="text-[32px] font-bold leading-10 mt-4 mb-6">
                     <h1 className='hover:text-[#d84315] cursor-pointer'>
                         <a href={`/article/${leadNews[0].id}/${leadNews[0].news_url}`}>{leadNews[0].title}</a>
-                        </h1>
+                    </h1>
                 </div>
                 <hr className='border-solid border-black border-0 border-b-[1px]' />
             </div>
@@ -51,13 +52,13 @@ const Category = async ({ params }) => {
             {/* parentCategories in api */}
             <div className='md:pr-6 grid gap-6'>
                 {
-                    parentCategories && (parentCategories.map((parentCategory, i) => (
+                    newsRows && (newsRows.map((parentCategory, i) => (
                         <div key={i}>
-                            <a 
-                            href={`/category/${params.category}/${parentCategory.category_url}`}
-                            className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4"
+                            <a
+                                href={`/category/${params.category}/${parentCategory.category_url}`}
+                                className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4"
                             >
-                            {parentCategory.category}
+                                {parentCategory.category}
                             </a>
                             <div className='mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-2'>
                                 {

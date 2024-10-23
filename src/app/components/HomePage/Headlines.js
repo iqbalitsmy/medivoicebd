@@ -46,7 +46,7 @@ const Headlines = () => {
       }
 
     return (
-        <div className="relative container mx-auto flex items-center border-solid border-[#d84315] border-[1px] my-6">
+        <div className="relative container mx-auto flex items-center border-solid border-[#d84315] border-[1px] my-2">
             {/* Headline Title */}
             <div className="text-white bg-[#d84315] px-4 py-1 pr-6"
                 style={{
