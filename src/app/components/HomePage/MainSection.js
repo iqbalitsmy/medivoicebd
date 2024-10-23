@@ -3,8 +3,18 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React from 'react';
+import MainBodyGridStyle from './DynamicComponent/MainBodyGridStyle';
+import OnLead from './DynamicComponent/OnLead';
+import LatestNewsTabs from './DynamicComponent/LatestNewsTabs';
+import NewsTabs from './DynamicComponent/NewsTabs';
+import FacebookTheme from './DynamicComponent/FacebookTheme';
+import Archive from './DynamicComponent/Archive';
+import VideoGallery from './DynamicComponent/VideoGallery';
 
 const MainSection = async () => {
+    const mainStructure = await getData('https://api.medivoicebd.com/home-setup?deviceType=PC&positionName=Main%20Body');
+
+
     const categories = await getData("https://api.medivoicebd.com/categories");
 
     // Use Promise.all to fetch category-specific news in parallel
@@ -17,6 +27,30 @@ const MainSection = async () => {
 
     return (
         <div className='w-full md:w-2/3 md:pr-5'>
+
+            <div>
+                {mainStructure.sort((a, b) => a.position - b.position).map((setup) => {
+                    switch (setup.theme) {
+                        case 'main-body-grid-style':
+                            return <MainBodyGridStyle key={setup.id} id={setup.id} />;
+                        case 'on-lead':
+                            return <OnLead key={setup.id} id={setup.id} />;
+                        case 'latest-news-tabs':
+                            return <LatestNewsTabs key={setup.id} id={setup.id} />;
+                        case 'news-tabs':
+                            return <NewsTabs key={setup.id} id={setup.id} />;
+                        case 'facebook':
+                            return <FacebookTheme key={setup.id} id={setup.id} />;
+                        case 'archive':
+                            return <Archive key={setup.id} id={setup.id} />;
+                        case 'video-gallery':
+                            return <VideoGallery key={setup.id} id={setup.id} />;
+                        default:
+                            return null;
+                    }
+                })}
+            </div>
+
             {/* --------- banner image------- */}
             <figure className='mb-4'>
                 <a href="">
@@ -166,11 +200,11 @@ const MainSection = async () => {
                                 {/* first news */}
                                 <div className='grid gap-2'>
                                     <Image src={`https://medivoicebd.com/${leadNews[0].image}`} alt="National News" width={160} height={80} className="w-full" />
-                                    <p 
-                                    className='text-lg font-bold leading-5 hover:text-[#d84315]'
+                                    <p
+                                        className='text-lg font-bold leading-5 hover:text-[#d84315]'
                                     >
                                         <a href={`/article/${leadNews[0].id}/${leadNews[0].news_url}`}>{leadNews[0].title}</a>
-                                        </p>
+                                    </p>
                                 </div>
                                 {/* news list */}
                                 <ul className="mt-4 grid gap-[1px] bg-gray-100">

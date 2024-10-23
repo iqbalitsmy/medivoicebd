@@ -2,8 +2,8 @@ import Asidebar from "./components/HomePage/Asidebar";
 import CalenderDate from "./components/HomePage/CalenderDate";
 import Headlines from "./components/HomePage/Headlines";
 import MainSection from "./components/HomePage/MainSection";
-export default async function Home() {
 
+export default async function Home() {
   return (
     <div className="min-h-screen px-4 md:px-2">
       <section className="max-w-[1170px] mx-auto">

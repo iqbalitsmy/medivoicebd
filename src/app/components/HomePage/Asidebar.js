@@ -4,10 +4,26 @@ import AsideCategoriesTabs from './AsideCategoriesTabs';
 import BanglaCalendar from './BanglaCalender';
 import FlexMiniNewsCard from '../shared/FlexMiniNewsCard/FlexMiniNewsCard';
 import Advertisement from '../shared/Advertisement/Advertisement';
+import { getData } from '@/app/utils/getData';
+import SidebarListStyle from './DynamicComponent/SidebarListStyle';
 
-const Asidebar = () => {
+const Asidebar = async () => {
+    const rightSideStructure = await getData('https://api.medivoicebd.com/home-setup?deviceType=PC&positionName=Main%20Body');
+
+
     return (
         <aside className='w-full md:w-1/3'>
+            <div>
+                {rightSideStructure.sort((a, b) => a.position - b.position).map((setup) => {
+                    switch (setup.theme) {
+                        case 'sidebar-list-style':
+                            return <SidebarListStyle key={setup.id} id={setup.id} />;
+                        default:
+                            return null;
+                    }
+                })}
+            </div>
+
             {/* advertisement */}
             <div className='mx-auto mb-4'>
                 <Advertisement image={"/images/advertisement/gif__4_image.gif"} />
