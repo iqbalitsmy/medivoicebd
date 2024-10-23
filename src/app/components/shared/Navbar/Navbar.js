@@ -7,6 +7,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import MenuDrawer from './MenuDrawer';
 import Link from 'next/link';
 import { getData } from '@/app/utils/getData';
+import NavLink from '../NavLink/NavLink';
 
 const Navbar = async ({ defaultConfig }) => {
   const categories = await getData("https://api.medivoicebd.com/categories");
@@ -36,12 +37,16 @@ const Navbar = async ({ defaultConfig }) => {
         <div className='mr-4 block md:hidden p-2 border-solid border-gray-200 border-[1px]'>
           <MenuDrawer />
         </div>
-        <div className='hidden md:flex items-center justify-between'>
+        <div className='hidden md:flex items-center justify-between text-lg'>
           {/* Links */}
           <div className="flex items-center lg:text-lg md:text-base gap-2 lg:gap-4">
             {
               categories.slice(0, 7).map((category, i) => (
-                <Link key={i} href={`/category/${category.category_url}`} className="hover:text-red-600">{category.category}</Link>
+                <NavLink
+                  key={i}
+                  path={`/category/${category.category_url}`} className="hover:text-red-600"
+                  title={category.category}
+                />
               ))
             }
             {/* Menu & Search Toggle (Client Components) */}

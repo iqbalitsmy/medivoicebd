@@ -11,7 +11,6 @@ import React from 'react';
 const ArticleLayout = async ({ children, params }) => {
     const { id, slug } = params;
     const { articleData } = await getData(`https://api.medivoicebd.com/article/${id}`);
-    // console.log(articleData)
 
     return (
         <>
