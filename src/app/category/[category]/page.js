@@ -11,7 +11,7 @@ const Category = async ({ params }) => {
     const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
 
     const { leadNews, parentCategories } = categoriesNews;
-    console.log(parentCategories)
+    // console.log(parentCategories)
 
     return (
         <div>

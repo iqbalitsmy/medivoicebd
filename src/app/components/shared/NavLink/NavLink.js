@@ -10,7 +10,7 @@ const NavLink = ({ title, path }) => {
     return (
         <Link
             href={path}
-            className={`${pathname === path ? "text-red-500" : ""}`}
+            className={`hover:text-red-600 ${pathname === path ? "text-red-500" : ""}`}
         >
             {title}
         </Link>

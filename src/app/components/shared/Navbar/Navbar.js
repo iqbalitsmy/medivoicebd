@@ -39,7 +39,7 @@ const Navbar = async ({ defaultConfig }) => {
         </div>
         <div className='hidden md:flex items-center justify-between text-lg'>
           {/* Links */}
-          <div className="flex items-center lg:text-lg md:text-base gap-2 lg:gap-4">
+          <div className="flex items-center text-lg gap-2 lg:gap-4">
             {
               categories.slice(0, 7).map((category, i) => (
                 <NavLink
