@@ -3,7 +3,7 @@ import React from 'react';
 import NewsLists from '../NewsLists';
 import Banner from '../../shared/Banner/Banner';
 
-const SidebarListStyle = async () => {
+const SidebarListStyle = async ({ id }) => {
     const mainBodyGridStyleData = await getData(`https://api.medivoicebd.com/home-page-data?homePageSetupId=${id}`);
     const { categoryData, advertisement } = mainBodyGridStyleData;
 

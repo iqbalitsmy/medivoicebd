@@ -8,7 +8,7 @@ import { getData } from '@/app/utils/getData';
 import SidebarListStyle from './DynamicComponent/SidebarListStyle';
 
 const Asidebar = async () => {
-    const rightSideStructure = await getData('https://api.medivoicebd.com/home-setup?deviceType=PC&positionName=Main%20Body');
+    const rightSideStructure = await getData('https://api.medivoicebd.com/home-setup?deviceType=PC&positionName=Right%20Sidebar');
 
 
     return (
