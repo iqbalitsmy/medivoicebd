@@ -2,7 +2,7 @@ export const getData = async (url, method = "GET") => {
     try {
         const res = await fetch(url, {
             method: method,
-            cache: 'no-store'
+            next: { revalidate: 300 },
         });
 
         if (!res.ok) {

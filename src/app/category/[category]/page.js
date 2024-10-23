@@ -8,8 +8,8 @@ import React from 'react';
 
 const Category = async ({ params }) => {
 
-    const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=%E0%A6%8F%E0%A6%A1%E0%A7%81-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A8%E0%A6%BE%E0%A6%B0`);
-    // const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
+    // const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=%E0%A6%8F%E0%A6%A1%E0%A7%81-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A8%E0%A6%BE%E0%A6%B0`);
+    const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
 
     const { leadNews, newsRows } = categoriesNews;
     console.log(categoriesNews)
