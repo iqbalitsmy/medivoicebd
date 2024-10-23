@@ -7,12 +7,10 @@ import Link from 'next/link';
 import React from 'react';
 
 const Category = async ({ params }) => {
-
-    // const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=%E0%A6%8F%E0%A6%A1%E0%A7%81-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A8%E0%A6%BE%E0%A6%B0`);
     const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
 
     const { leadNews, newsRows } = categoriesNews;
-    console.log(categoriesNews)
+    // console.log(categoriesNews)
 
     return (
         <div>
@@ -35,7 +33,7 @@ const Category = async ({ params }) => {
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-2'>
                     {
                         leadNews && (
-                            leadNews.map((news, index) => (
+                            leadNews.slice(1).map((news, index) => (
                                 <MiniNewsCard
                                     key={index}
                                     title={news.title}

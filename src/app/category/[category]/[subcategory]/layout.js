@@ -33,7 +33,7 @@ const SubCategoryLayout = async ({ params }) => {
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-3'>
                     {
                         leadNews && (
-                            leadNews.map((news, index) => (
+                            leadNews.slice(1).map((news, index) => (
                                 <MiniNewsCard
                                     key={index}
                                     title={news.title}
