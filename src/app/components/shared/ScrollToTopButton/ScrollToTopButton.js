@@ -54,7 +54,9 @@ const ScrollToTopButton = () => {
             className={`fixed bottom-4 right-4 z-50 p-2 rounded-md bg-[#2196f3] text-white transition-opacity duration-300 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
         >
-            <FontAwesomeIcon icon={faAngleUp} className="h-8 w-8" />
+            <span className='grid place-content-center'>
+                <FontAwesomeIcon icon={faAngleUp} className="h-8 w-8" />
+            </span>
         </button>
     );
 };
