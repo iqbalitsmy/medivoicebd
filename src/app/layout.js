@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "./components/shared/Footer";
 import Navbar from "./components/shared/Navbar/Navbar";
 import { getData } from "./utils/getData";
+import ScrollToTopButton from "./components/shared/ScrollToTopButton/ScrollToTopButton";
 
 const kironSans = localFont({
   src: "./fonts/Kiron.woff",
@@ -67,6 +68,7 @@ export default async function RootLayout({ children }) {
         </header>
         <main>{children}</main>
         <Footer />
+        <ScrollToTopButton />
       </body>
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0"></script>
     </html>
