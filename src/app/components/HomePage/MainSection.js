@@ -10,10 +10,17 @@ import NewsTabs from './DynamicComponent/NewsTabs';
 import FacebookTheme from './DynamicComponent/FacebookTheme';
 import Archive from './DynamicComponent/Archive';
 import VideoGallery from './DynamicComponent/VideoGallery';
+import { headers } from 'next/headers';
 
 const MainSection = async () => {
-    const mainStructure = await getData('https://api.medivoicebd.com/home-setup?deviceType=PC&positionName=Main%20Body');
+    const userAgent = headers().get('user-agent') || '';
 
+    // Basic check for mobile devices
+    const isMobile = /mobile|android|iphone|ipad|ipod/i.test(userAgent);
+
+    const mainStructure = await getData(`https://api.medivoicebd.com/home-setup?deviceType=${isMobile ? "Mobile" : "PC"}&positionName=Main%20Body`);
+
+    console.log(isMobile);
 
     const categories = await getData("https://api.medivoicebd.com/categories");
 
@@ -29,7 +36,8 @@ const MainSection = async () => {
         <div className='w-full md:w-2/3 md:pr-5'>
 
             <div>
-                {mainStructure.sort((a, b) => a.position - b.position).map((setup) => {
+                { mainStructure &&
+                (mainStructure.sort((a, b) => a.position - b.position).map((setup) => {
                     switch (setup.theme) {
                         case 'main-body-grid-style':
                             return <MainBodyGridStyle key={setup.id} id={setup.id} />;
@@ -48,7 +56,8 @@ const MainSection = async () => {
                         default:
                             return null;
                     }
-                })}
+                }))
+                }
             </div>
 
             {/* --------- banner image------- */}

@@ -1,5 +1,4 @@
 import AsideCategoriesTabs from '@/app/components/HomePage/AsideCategoriesTabs';
-import Pagination from '@/app/components/shared/Pagination/Pagination';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
