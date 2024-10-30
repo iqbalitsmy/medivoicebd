@@ -1,4 +1,4 @@
-export const getData = async (url, method = "GET", revalidateTime = 300 ) => {
+export const getData = async (url, method = "GET", revalidateTime = 3600 ) => {
     try {
         const res = await fetch(url, {
             method: method,

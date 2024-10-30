@@ -11,7 +11,7 @@ const MainNews = ({ news }) => {
                 <article className='mb-4 mx-auto'>
                     <Image className='mx-auto' src={`https://medivoicebd.com/${news[0].image}`} height={450} width={600} alt={news[0].title} />
                     <div className="text-[32px] font-bold leading-10 mt-2">
-                        <h1 className='hover:text-[#d84315] cursor-pointer'>{news[0].title}</h1>
+                        <h1 className='hover:text-[#d84315] cursor-pointer'><a href={`/article/${news[0].id}/${news[0].news_url}`}>{news[0].title}</a></h1>
                     </div>
                 </article>
                 {/* after first news card 2 cards */}

@@ -11,7 +11,7 @@ import FacebookTheme from './DynamicComponent/FacebookTheme';
 import Archive from './DynamicComponent/Archive';
 import VideoGallery from './DynamicComponent/VideoGallery';
 import { headers } from 'next/headers';
-
+ 
 const MainSection = async () => {
     const userAgent = headers().get('user-agent') || '';
 

@@ -5,9 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import AllCategories from './AllCategories';
 import { faFacebookF, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import Link from 'next/link';
 
-const MenuDrawer = () => {
+const MenuDrawer = ({ categories }) => {
     const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
     const toggleMenu = () => setIsMenuDrawerOpen(!isMenuDrawerOpen);
 
@@ -21,33 +20,21 @@ const MenuDrawer = () => {
                 className={`py-2 pb-10 absolute bottom-0 left-0 right-0 bg-white mx-auto transition-all duration-300 overflow-hidden -z-10 ${isMenuDrawerOpen ? "translate-y-full z-10" : "-translate-y-full"}`}
             >
                 <div className='block flex-col md:hidden items-center justify-start pl-4'>
-                    {/* Links */}
+                    {/* as */}
                     <div>
                         <ul className="grid items-center lg:text-lg md:text-base gap-4">
-                            <li>
-                                <Link href="/category/জাতীয়" className="hover:text-red-600">জাতীয়</Link>
-                            </li>
-                            <li>
-                                <Link href="/category/আন্তর্জাতিক" className="hover:text-red-600">আন্তর্জাতিক</Link>
-                            </li>
-                            <li>
-                                <Link href="/category/সাক্ষাৎকার" className="hover:text-red-600">সাক্ষাৎকার</Link>
-                            </li>
-                            <li>
-                                <Link href="/category/ক্যাম্পাস" className="hover:text-red-600">ক্যাম্পাস</Link>
-                            </li>
-                            <li>
-                                <Link href="/category/এডুকর্ণার" className="hover:text-red-600">এডুকর্ণার</Link>
-                            </li>
-                            <li>
-                                <Link href="/category/স্বাস্থ্য" className="hover:text-red-600">স্বাস্থ্য</Link>
-                            </li>
-                            <li>
-                                <Link href="/category/সম্পাদকীয়" className="hover:text-red-600">সম্পাদকীয়</Link>
-                            </li>
-                            <li>
-                                <Link href="/category/চাকরি" className="hover:text-red-600">চাকরি</Link>
-                            </li>
+                            {
+                                categories.slice(0, 7).map((category, i) => (
+                                    <li key={i}>
+                                        <a
+                                            href={`/category/${category.category_url}`}
+                                            className="hover:text-red-600"
+                                        >
+                                            {category.category}
+                                        </a>
+                                    </li>
+                                ))
+                            }
                             <li>
                                 <AllCategories />
                             </li>

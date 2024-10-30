@@ -34,12 +34,13 @@ const Navbar = async ({ defaultConfig }) => {
             <Image src="/images/logo/logo.png" alt="Logo" width={150} height={300} />
           </Link>
         </div>
+        {/* for mobile */}
         <div className='mr-4 block md:hidden p-2 border-solid border-gray-200 border-[1px]'>
-          <MenuDrawer />
+          <MenuDrawer categories={categories} />
         </div>
         <div className='hidden md:flex items-center justify-between text-lg'>
           {/* Links */}
-          <div className="flex items-center text-lg gap-2 lg:gap-4">
+          <div className="flex items-center text-lg gap-4 lg:gap-5">
             {
               categories.slice(0, 7).map((category, i) => (
                 <NavLink

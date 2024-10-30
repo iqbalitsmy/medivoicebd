@@ -10,11 +10,14 @@ const SubCategoryLayout = async ({ params }) => {
     const currentPage = parseInt(1, 10) || 1;
     const totalPages = 10;
 
-    if (!subCategoriesNews) {
-        <h1 className='text-center my-5 text-4xl'>Loading.....</h1>
-    }
-    
     const { leadNews, newsRows } = subCategoriesNews || [];
+
+    if (!subCategoriesNews) {
+        return <h1 className='text-center my-5 text-4xl'>Loading.....</h1>
+    }
+    if (!(leadNews.length > 0) && !(newsRows.length > 0)) {
+        return <h1 className='text-center my-5 text-4xl'>No News Found</h1>
+    }
 
     return (
         <div>
@@ -31,34 +34,34 @@ const SubCategoryLayout = async ({ params }) => {
                 <div className='md:pr-6 mb-4'>
                     <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">নির্বাচিত</h2>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-3'>
-                    {
-                        leadNews && (
-                            leadNews.slice(1).map((news, index) => (
-                                <MiniNewsCard
-                                    key={index}
-                                    title={news.title}
-                                    small_title={news.small_title}
-                                    image={`https://medivoicebd.com/${news?.image}`}
-                                    news_url={`/article/${news.id}/${news.news_url}`}
-                                />
-                            ))
-                        )
-                    }
-                    {
-                        newsRows && (
-                            newsRows.map((news, index) => (
-                                <MiniNewsCard
-                                    key={index}
-                                    title={news.title}
-                                    small_title={news.small_title}
-                                    image={`https://medivoicebd.com/${news?.image}`}
-                                    news_url={`/article/${news.id}/${news.news_url}`}
-                                />
-                            ))
-                        )
-                        
-                    }
-                    
+                        {
+                            leadNews && (
+                                leadNews.slice(1).map((news, index) => (
+                                    <MiniNewsCard
+                                        key={index}
+                                        title={news.title}
+                                        small_title={news.small_title}
+                                        image={`https://medivoicebd.com/${news?.image}`}
+                                        news_url={`/article/${news.id}/${news.news_url}`}
+                                    />
+                                ))
+                            )
+                        }
+                        {
+                            newsRows && (
+                                newsRows.map((news, index) => (
+                                    <MiniNewsCard
+                                        key={index}
+                                        title={news.title}
+                                        small_title={news.small_title}
+                                        image={`https://medivoicebd.com/${news?.image}`}
+                                        news_url={`/article/${news.id}/${news.news_url}`}
+                                    />
+                                ))
+                            )
+
+                        }
+
                     </div>
                 </div>
             </div>

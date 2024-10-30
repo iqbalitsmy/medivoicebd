@@ -12,7 +12,7 @@ const CategoryLayout = async ({ children, params }) => {
     return (
         <section className='min-h-screen container mx-auto max-w-[1170px] px-4'>
             {
-                (subCategories.length > 0) && (
+                (subCategories?.length > 0) && (
                     <nav className='mt-6 flex items-center gap-8 pb-4 border-solid border-black border-b-[1px]'>
                         <h1 className='text-[#fd0408] text-[22px] font-bold'>
                             <Link href={`/category/${params.category}`}>{decodeURIComponent(params.category)}</Link>
@@ -20,7 +20,7 @@ const CategoryLayout = async ({ children, params }) => {
                         {/* ---------subcategory---- */}
                         {
                             (subCategories.length > 0) && (
-                                <ul className='flex items-center'>
+                                <ul className='flex flex-wrap items-center'>
                                     {subCategories.map((subCategory, i) => (
                                         <li
                                             key={i}

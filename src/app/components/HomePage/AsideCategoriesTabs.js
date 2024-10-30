@@ -39,7 +39,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     {/* News Headline */}
                                     <div className="leading-tight">
                                         <p className="hover:text-[#d84315] cursor-pointer">
-                                            <a href={`/article/${latestNews[0].id}/${latestNews[0].news_url}`}>{latestNews[0].title}</a>
+                                            <a href={`/article/${latestNews[0].id}/${latestNews[0].blog_url}`}>{latestNews[0].title}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                         {
                                             latestNews.slice(1).map((news, i) => (
                                                 <li key={i} className='bg-white py-2'>
-                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.news_url}`}>{news.title}</a>
+                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
                                                 </li>
                                             ))
                                         }
@@ -77,7 +77,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     {/* News Headline */}
                                     <div className="leading-tight">
                                         <p className="hover:text-[#d84315] cursor-pointer">
-                                            <a href={`/article/${popularNews[0].id}/${popularNews[0].news_url}`}>{popularNews[0].title}</a>
+                                            <a href={`/article/${popularNews[0].id}/${popularNews[0].blog_url}`}>{popularNews[0].title}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                         {
                                             popularNews.slice(1).map((news, i) => (
                                                 <li key={i} className='bg-white py-2'>
-                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.news_url}`}>{news.title}</a>
+                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
                                                 </li>
                                             ))
                                         }
@@ -115,7 +115,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     {/* News Headline */}
                                     <div className="leading-tight">
                                         <p className="hover:text-[#d84315] cursor-pointer">
-                                            <a href={`/article/${selectedNews[0].id}/${selectedNews[0].news_url}`}>{selectedNews[0].title}</a>
+                                            <a href={`/article/${selectedNews[0].id}/${selectedNews[0].blog_url}`}>{selectedNews[0].title}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                         {
                                             selectedNews.slice(1).map((news, i) => (
                                                 <li key={i} className='bg-white py-2'>
-                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.news_url}`}>{news.title}</a>
+                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
                                                 </li>
                                             ))
                                         }

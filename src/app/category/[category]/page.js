@@ -9,7 +9,7 @@ import React from 'react';
 const Category = async ({ params }) => {
     const categoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}`);
 
-    const { leadNews, newsRows } = categoriesNews;
+    const { leadNews, newsRows } = categoriesNews || [];
     // console.log(categoriesNews)
 
     return (

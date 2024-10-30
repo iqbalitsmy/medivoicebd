@@ -1,3 +1,4 @@
+import LoadMoreStreamData from '@/app/components/ArticleDetails/LoadMoreStreamData';
 import PersonDetailsCard from '@/app/components/ArticleDetails/SharedCard';
 import SocialShare from '@/app/components/ArticleDetails/SocialShare';
 import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
@@ -21,15 +22,15 @@ const ArticlePage = async ({ params }) => {
             {/* person information */}
             <aside className='w-full md:w-1/4 pr-2'>
                 {/* ------shared option------ */}
-                <PersonDetailsCard 
-                person={{
-                    id: articleData.writer_id,
-                    // url: articleData.writer_name,
-                    name: articleData.writer_name,
-                    image: `https://medivoicebd.com/uploads/${articleData.writer_image}`,
-                    details: articleData.writer_details,
-                }} 
-                publishDate={`${convertToBengaliDate(articleData.date)} ${convertToBengaliTime(articleData.time)}`} 
+                <PersonDetailsCard
+                    person={{
+                        id: articleData.writer_id,
+                        // url: articleData.writer_name,
+                        name: articleData.writer_name,
+                        image: `https://medivoicebd.com/uploads/${articleData.writer_image}`,
+                        details: articleData.writer_details,
+                    }}
+                    publishDate={`${convertToBengaliDate(articleData.date)} ${convertToBengaliTime(articleData.time)}`}
                 />
             </aside>
             {/* article */}
@@ -87,37 +88,40 @@ const ArticlePage = async ({ params }) => {
                 {/* @TODO more button */}
                 {
                     streamData && (
-                        <div>
-                            <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg mb-2 pl-4">
-                                ঘটনা প্রবাহ : {streamData.tag}
-                            </h2>
-                            <ul className="pl-4">
-                                {streamRows.map((streamRow, index) => (
-                                    <li key={index} className="flex flex-wrap mb-2">
-                                        {/* right side */}
-                                        <span className="w-1/4 text-lg font-bold ">{convertToBengaliDate(streamRow.date)}</span>
-                                        {/* left side */}
-                                        <div className='pl-2 text-left w-3/4'>
-                                            {/* small title */}
-                                            <p className="text-red-600 text-xs pl-4">
-                                                {streamRow.small_title}
-                                            </p>
-                                            {/* title */}
-                                            <div className='flex gap-2'>
-                                                <span className="text-blue-500 text-[22px] font-bold cursor-pointer hover:text-[#d84315]">
-                                                    <span className='text-black pr-2 text-'>
-                                                        <FontAwesomeIcon icon={faCaretRight} />
+                        <>
+                            <div>
+                                <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg mb-2 pl-4">
+                                    ঘটনা প্রবাহ : {streamData.tag}
+                                </h2>
+                                <ul className="pl-4">
+                                    {streamRows.map((streamRow, index) => (
+                                        <li key={index} className="flex flex-wrap mb-2">
+                                            {/* right side */}
+                                            <span className="w-1/4 text-lg font-bold ">{convertToBengaliDate(streamRow.date)}</span>
+                                            {/* left side */}
+                                            <div className='pl-2 text-left w-3/4'>
+                                                {/* small title */}
+                                                <p className="text-red-600 text-xs pl-4">
+                                                    {streamRow.small_title}
+                                                </p>
+                                                {/* title */}
+                                                <div className='flex gap-2'>
+                                                    <span className="text-blue-500 text-[22px] font-bold cursor-pointer hover:text-[#d84315]">
+                                                        <span className='text-black pr-2 text-'>
+                                                            <FontAwesomeIcon icon={faCaretRight} />
+                                                        </span>
+                                                        <a href={`/article/${streamRow.id}/${streamRow.url}`}>
+                                                            {streamRow.title}
+                                                        </a>
                                                     </span>
-                                                    <a href={`/article/${streamRow.id}/${streamRow.url}`}>
-                                                        {streamRow.title}
-                                                    </a>
-                                                </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <LoadMoreStreamData eventStreamId={streamData.id} />
+                        </>
                     )
                 }
                 {/* -------news navigation------ */}
