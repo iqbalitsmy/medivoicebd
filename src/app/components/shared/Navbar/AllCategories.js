@@ -49,12 +49,12 @@ const AllCategories = ({ categories }) => {
             </div>
             {/* Dropdown Menu */}
             <nav
-                className={`menu-open py-2 absolute top-0 left-0 right-0 w-full bg-white mx-auto transition-all duration-300 z-30 ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
+                className={`menu-open p-2 absolute top-0 left-0 right-0 w-full bg-white mx-auto transition-all duration-300 z-30 ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
             >
                 <div className=''>
                     <div className="container max-w-[1170px] mx-auto flex flex-wrap items-center justify-between py-2">
                         {/* Logo */}
-                        <div className="grid place-content-center">
+                        <div className="hidden md:block grid place-content-center">
                             <Image src="/images/logo/logo.png" alt="Logo" width={150} height={300} />
                         </div>
                         <div className='flex justify-between gap-16'>
@@ -64,11 +64,13 @@ const AllCategories = ({ categories }) => {
                                     <FontAwesomeIcon icon={faXmark} />
                                     <span>সব</span>
                                 </button>
-                                <SearchToggle /> {/* Search Toggle Client Component */}
+                                <div className='hidden md:block'>
+                                    <SearchToggle /> {/* Search Toggle Client Component */}
+                                </div>
                             </div>
 
                             {/* Social Icons (shown on desktop) */}
-                            <div className="flex flex-row gap-3 justify-center items-center">
+                            <div className="hidden md:block flex flex-row gap-3 justify-center items-center">
                                 <FontAwesomeIcon icon={faFacebookF} className="text-gray-600 hover:text-blue-600 cursor-pointer h-4 md:h-6 w-4 md:w-6" />
                                 <FontAwesomeIcon icon={faXTwitter} className="text-gray-600 hover:text-black cursor-pointer h-4 md:h-6 w-4 md:w-6" />
                                 <FontAwesomeIcon icon={faYoutube} className="text-gray-600 hover:text-red-600 cursor-pointer h-4 md:h-6 w-4 md:w-6" />
@@ -77,7 +79,7 @@ const AllCategories = ({ categories }) => {
                         </div>
                     </div>
                     {/* Links */}
-                    <div className="m-4 container max-w-[1170px] mx-auto">
+                    <div className="m-4 container max-w-[1170px] mx-auto overflow-x-auto">
                         <ul className='grid justify-center grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-center text-lg gap-2 lg:gap-4'>
                             {
                                 categories.map((category, i) => (

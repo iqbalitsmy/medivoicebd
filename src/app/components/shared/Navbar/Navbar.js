@@ -56,7 +56,7 @@ const Navbar = async ({ defaultConfig }) => {
           </div>
 
           {/* Social Icons (shown on desktop) */}
-          <div className="hidden md:flex flex-col lg:flex-row gap-[2px] lg:gap-2 justify-center items-center">
+          <div className="hidden md:flex flex-col lg:flex-row lg:gap-2 justify-center items-center">
             <a target='_blank' href={defaultConfig.facebook_link}>
               <FontAwesomeIcon icon={faFacebookF} className="text-gray-600 hover:text-blue-600 cursor-pointer h-4 md:h-5 lg:h-6 w-4 lg:w-6" />
             </a>

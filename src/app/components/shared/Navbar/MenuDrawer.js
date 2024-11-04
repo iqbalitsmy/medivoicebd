@@ -11,7 +11,7 @@ const MenuDrawer = ({ categories }) => {
     const toggleMenu = () => setIsMenuDrawerOpen(!isMenuDrawerOpen);
 
     return (
-        <div>
+        <div className=''>
             {/* Menu Button */}
             <button onClick={toggleMenu} className="text-lg lg:text-xl flex flex-wrap items-center gap-[1px] lg:gap-1">
                 <FontAwesomeIcon icon={faBars} className='' />
@@ -36,7 +36,7 @@ const MenuDrawer = ({ categories }) => {
                                 ))
                             }
                             <li>
-                                <AllCategories />
+                                <AllCategories categories={categories} />
                             </li>
                         </ul>
                     </div>
