@@ -30,7 +30,7 @@ const Category = async ({ params }) => {
             {/* নির্বাচিত section */}
             <div className='md:pr-6 mb-4'>
                 <h2 className="border-solid border-l-[3px] border-[#d84315] text-lg font-bold mb-2 pl-4">নির্বাচিত</h2>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-x-4 gap-y-2'>
+                <div className='grid grid-cols-2 sm:grid-cols-3 justify-center gap-x-4 gap-y-2'>
                     {
                         leadNews && (
                             leadNews.slice(1).map((news, index) => (

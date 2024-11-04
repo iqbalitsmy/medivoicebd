@@ -36,10 +36,10 @@ const CategoryLayout = async ({ children, params }) => {
                 )
             }
             <div className='flex flex-wrap mt-6'>
-                <aside className='w-2/3'>
+                <aside className='w-full md:w-2/3'>
                     {children}
                 </aside>
-                <aside className='w-1/3'>
+                <aside className='w-full md:w-1/3'>
                     {/* categories tabs */}
                     <div className='mb-4 p-3 py-4 border-solid border-gray-200 border-[1px] shadow-sm'>
                         <AsideCategoriesTabs />

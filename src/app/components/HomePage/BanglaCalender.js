@@ -42,7 +42,7 @@ const currentMonth = currentDate.getMonth();
 
     // Start calendar with empty days for alignment
     for (let i = 0; i < firstDay; i++) {
-      calendar.push(<div key={`empty-${i}`} className="h-10 bg-gray-300"></div>);
+      calendar.push(<div key={`empty-${i}`} className="h-10 bg-gray-200"></div>);
     }
 
     // Fill in the actual days
@@ -55,7 +55,7 @@ const currentMonth = currentDate.getMonth();
           href={`/archive/${selectedYear}/${selectedMonth}/${i}`}
           className={isFuture ? "pointer-events-none" : ""}
         >
-          <div className={`h-10 hover:bg-gray-50 flex items-center justify-center border ${isFuture ? "bg-gray-200" : "bg-gray-100"}`}>
+          <div className={`h-10 hover:bg-gray-50 flex items-center justify-center border ${isFuture ? "bg-gray-300" : "bg-gray-100"}`}>
             {convertToBanglaNumber(i)}
           </div>
         </a>
