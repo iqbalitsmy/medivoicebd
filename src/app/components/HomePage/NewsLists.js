@@ -22,7 +22,7 @@ const NewsLists = ({category, categoryUrl, news}) => {
                 {
                     news.slice(1, 5).map((leadNewsList, i) => (
                         <li key={i} className='bg-white py-2'>
-                            <FontAwesomeIcon icon={faCaretRight} />
+                            <FontAwesomeIcon style={{height: '1.2rem'}} icon={faCaretRight} />
                             <a
                                 className='hover:text-[#d84315] pl-2'
                                 href={`/article/${leadNewsList.id}/${leadNewsList.news_url}`}
