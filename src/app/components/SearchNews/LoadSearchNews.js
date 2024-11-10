@@ -5,7 +5,6 @@ import SearchNewsCard from './SearchNewsCard';
 import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const LoadSearchNews = ({keyword}) => {
-    // get keyword from search params
 
     const [newsData, setNewsData] = useState([]);
     const [hasMore, setHasMore] = useState(true);
