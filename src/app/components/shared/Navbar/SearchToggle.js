@@ -3,12 +3,17 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SearchToggle = () => {
+    const router = useRouter();
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isInputFocus, setIsInputFocus] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
+    // toggle search
     const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+    // toggle input focus
     const toggleIsInputFocus = () => setIsInputFocus(true);
 
     // handle input focus click outside
@@ -40,6 +45,27 @@ const SearchToggle = () => {
         };
     }, []);
 
+    // handle search change
+    const handleSearchChange = (e) => {
+        setSearchValue(e.target.value);
+    };
+
+    // Add handleSearch function
+    const handleSearch = () => {
+        if (searchValue.trim()) {
+            router.push(`/search?keyword=${encodeURIComponent(searchValue)}`);
+            toggleSearch();
+        }
+    };
+
+    // Add handleKeyPress function
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+            toggleSearch();
+        }
+    };
+
     return (
         <div className=''>
             {/* Search Button */}
@@ -47,7 +73,7 @@ const SearchToggle = () => {
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
             {/* for shadow */}
-            <div className={`bg-black mx-auto transition-all duration-200 ${isSearchOpen ? "opacity-20 z-40 inset-0 w-full min-h-full fixed" : "opacity-0 -z-50 w-0 min-h-0 w-0"}`}
+            <div className={`bg-black mx-auto transition-all duration-200 ${isSearchOpen ? "opacity-20 z-40 inset-0 w-full min-h-full fixed" : "opacity-0 -z-50 w-0 min-h-0"}`}
             >
             </div>
 
@@ -56,13 +82,21 @@ const SearchToggle = () => {
                 <div className='px-4 w-full bg-white p-4 shadow-md flex items-center justify-center'>
                     <input
                         type="text"
-                        placeholder="Search..."
+                        placeholder="কী খুঁজতে চান?"
+                        value={searchValue}
+                        onChange={handleSearchChange}
                         onFocus={toggleIsInputFocus}
+                        onKeyPress={handleKeyPress}
                         className="w-full p-2 pl-6 border-solid border-[1px] focus:border-green-600 focus:outline-none input-search"
                     />
-                    <button className={`text-xl px-5 py-2 border-solid border-gray-400 border-[1px] hover:bg-slate-300 ${isInputFocus ? "bg-green-200" : ""}`}>
+                    {/* search button */}
+                    <button
+                        onClick={handleSearch}
+                        className={`text-xl px-5 py-2 border-solid border-gray-400 border-[1px] hover:bg-slate-300 ${isInputFocus ? "bg-green-200" : ""}`}
+                    >
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
+                    {/* close button */}
                     <button onClick={toggleSearch} className={`text-xl px-6 py-2 border-solid border-gray-400 border-[1px] hover:bg-slate-300 ${isInputFocus ? "bg-green-200" : ""}`}>
                         x
                     </button>
