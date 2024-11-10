@@ -5,6 +5,7 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
+import { getData } from '@/app/utils/getData';
 
 const LoadMoreStreamData = ({ eventStreamId }) => {
     const [streams, setStreams] = useState([]);
@@ -35,9 +36,9 @@ const LoadMoreStreamData = ({ eventStreamId }) => {
     }, [streams])
 
     async function fetchMoreItems() {
-        const response = await fetch(`https://api.medivoicebd.com/more-stream-news?page=${page}&eventStreamId=${eventStreamId}`)
+        const data = await getData(`https://api.medivoicebd.com/more-stream-news?page=${page}&eventStreamId=${eventStreamId}`)
 
-        const data = await response.json();
+        // const data = await response.json();
 
         if (data.streamRows.length === 0) {
             setHasMore(false);

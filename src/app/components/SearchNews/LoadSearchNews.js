@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import SearchNewsCard from './SearchNewsCard';
 import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
+import { getData } from '@/app/utils/getData';
 
 const LoadSearchNews = ({keyword}) => {
 
@@ -46,13 +47,7 @@ const LoadSearchNews = ({keyword}) => {
 
     async function fetchMoreItems() {
         try {
-            const response = await fetch(`https://api.medivoicebd.com/search-news?keyword=${encodeURIComponent(keyword)}&page=${page}`);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
+            const data = await getData(`https://api.medivoicebd.com/search-news?keyword=${encodeURIComponent(keyword)}&page=${page}`);
 
             if (data.newsRows.length === 0) {
                 setHasMore(false);

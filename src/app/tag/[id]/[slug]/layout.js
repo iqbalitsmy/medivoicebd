@@ -14,7 +14,7 @@ const TagLayout = ({ children, params }) => {
                         <h1
                             className="flex gap-1 text-2xl mb-4"
                         >
-                            <FontAwesomeIcon className='' icon={faTag} />
+                            <FontAwesomeIcon style={{height: '1.2rem'}} className='' icon={faTag} />
                             <span>{decodeURIComponent(slug).split("-").join(" ")}</span>
                         </h1>
                     </div>
