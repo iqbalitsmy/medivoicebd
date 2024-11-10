@@ -1,45 +1,13 @@
-import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
-import Pagination from '@/app/components/shared/Pagination/Pagination';
-import { getData } from '@/app/utils/getData';
+import LoadTagsNews from '@/app/components/TagsNews/LoadTagsNews';
 import React from 'react';
 
 const TagPage = async ({ params }) => {
-    const { id, slug } = params;
-
-    const data = await getData(`https://api.medivoicebd.com/tag-news?page=1&tagId=${id}&type=tag`);
-
-    const currentPage = parseInt(1, 10) || 1;
-    const totalPages = 10;
-
-    const newsRows = data?.newsRows || [];
+    const { id } = params;
 
     return (
-        <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
-                {
-                    newsRows && (newsRows.length > 0) ? (
-                        newsRows.map((news, index) => (
-                            <MiniNewsCard
-                                key={index}
-                                title={news.title}
-                                small_title={news.small_title}
-                                image={`https://medivoicebd.com/${news?.image}`}
-                                news_url={`/article/${news.id}/${news.news_url}`}
-                            />
-                        ))
-                    ) : (
-                        <h1 className='text-3xl text-center'>News not found</h1>
-                    )
-                }
-            </div>
-            {
-                newsRows && (newsRows.length > 0) && (
-                    <div className='mt-10'>
-                        <Pagination route={`/tag/${id}/${slug}/`} currentPage={currentPage} totalPages={totalPages} />
-                    </div>
-                )
-            }
-        </>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
+            <LoadTagsNews tagId={id} />
+        </div>
     );
 };
 

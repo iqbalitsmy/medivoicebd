@@ -4,6 +4,7 @@ import convertToBengaliDate from '@/app/utils/convertToBengaliDate';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
+import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const LoadMoreStreamData = ({ eventStreamId }) => {
     const [streams, setStreams] = useState([]);
@@ -82,8 +83,8 @@ const LoadMoreStreamData = ({ eventStreamId }) => {
             }
             {
                 hasMore && (
-                    <div ref={elementRef}>
-                        <h2 className='text-center'>Load More....</h2>
+                    <div className='grid place-items-center w-full mx-auto' ref={elementRef}>
+                        <LoadingSpinner />
                     </div>
                 )
             }

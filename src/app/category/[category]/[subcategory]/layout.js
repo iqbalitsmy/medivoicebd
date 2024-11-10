@@ -1,14 +1,10 @@
 import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
-import Pagination from '@/app/components/shared/Pagination/Pagination';
 import { getData } from '@/app/utils/getData';
 import Image from 'next/image';
 import React from 'react';
 
 const SubCategoryLayout = async ({ params }) => {
     const subCategoriesNews = await getData(`https://api.medivoicebd.com/category-news?categoryUrl=${decodeURIComponent(params.category)}&parentUrl=${decodeURIComponent(params.subcategory)}`);
-
-    const currentPage = parseInt(1, 10) || 1;
-    const totalPages = 10;
 
     const { leadNews, newsRows } = subCategoriesNews || [];
 
@@ -64,10 +60,6 @@ const SubCategoryLayout = async ({ params }) => {
 
                     </div>
                 </div>
-            </div>
-            {/* pagination */}
-            <div>
-                <Pagination currentPage={currentPage} totalPages={totalPages} />
             </div>
         </div>
     );
