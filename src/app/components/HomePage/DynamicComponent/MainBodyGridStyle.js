@@ -17,6 +17,8 @@ const MainBodyGridStyle = async ({ id }) => {
                         <NewsLists
                             key={key}
                             category={categoryData[key].category}
+                            shoulderColor={categoryData[key]?.shoulder_color}
+                            headlineColor={categoryData[key]?.headline_color}
                             categoryUrl={`category/${categoryData[key].category_url}`}
                             news={categoryData[key].newsRows}
                         />

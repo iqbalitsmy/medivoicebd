@@ -1,5 +1,6 @@
 'use client';
 
+import getHeadlineColor from '@/app/utils/getHeadlineColor';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
@@ -27,6 +28,7 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                     {
                         (latestNews?.length > 0) && (
                             <>
+                                {/* first news card */}
                                 <div className="flex items-start gap-4 shadow-sm pt-2 pb-3 bg-white opacity-100 transition-opacity delay-300">
                                     {/* News Image */}
                                     <Image
@@ -38,17 +40,22 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     />
                                     {/* News Headline */}
                                     <div className="leading-tight">
-                                        <p className="hover:text-[#d84315] cursor-pointer">
+                                        <h5 className={`text-xs ${getHeadlineColor(latestNews[0].shoulder_color)}`}>{latestNews[0].small_title}</h5>
+                                        <h3 className={`hover:text-[#d84315] cursor-pointer ${getHeadlineColor(latestNews[0].headline_color)}`}>
                                             <a href={`/article/${latestNews[0].id}/${latestNews[0].blog_url}`}>{latestNews[0].title}</a>
-                                        </p>
+                                        </h3>
                                     </div>
                                 </div>
+                                {/* other news cards */}
                                 <div>
                                     <ul className="mt-4 grid gap-[1px] bg-gray-100">
                                         {
                                             latestNews.slice(1).map((news, i) => (
-                                                <li key={i} className='bg-white py-2'>
-                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
+                                                <li key={i} className={`bg-white py-2 ${getHeadlineColor(news.shoulder_color)}`}>
+                                                    <h5 className={`text-xs ${getHeadlineColor(news.shoulder_color)}`}>{news.small_title}</h5>
+                                                    <h3 className={`hover:text-[#d84315] cursor-pointer ${getHeadlineColor(news.headline_color)}`}>
+                                                        <a href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
+                                                    </h3>
                                                 </li>
                                             ))
                                         }
@@ -76,17 +83,21 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     />
                                     {/* News Headline */}
                                     <div className="leading-tight">
-                                        <p className="hover:text-[#d84315] cursor-pointer">
+                                        <h5 className={`text-xs ${getHeadlineColor(popularNews[0].shoulder_color)}`}>{popularNews[0].small_title}</h5>
+                                        <h3 className={`hover:text-[#d84315] cursor-pointer ${getHeadlineColor(popularNews[0].headline_color)}`}>
                                             <a href={`/article/${popularNews[0].id}/${popularNews[0].blog_url}`}>{popularNews[0].title}</a>
-                                        </p>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div>
                                     <ul className="mt-4 grid gap-[1px] bg-gray-100">
                                         {
                                             popularNews.slice(1).map((news, i) => (
-                                                <li key={i} className='bg-white py-2'>
-                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
+                                                <li key={i} className={`bg-white py-2 ${getHeadlineColor(news.shoulder_color)}`}>
+                                                    <h5 className={`text-xs ${getHeadlineColor(news.shoulder_color)}`}>{news.small_title}</h5>
+                                                    <h3 className={`hover:text-[#d84315] cursor-pointer ${getHeadlineColor(news.headline_color)}`}>
+                                                        <a href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
+                                                    </h3>
                                                 </li>
                                             ))
                                         }
@@ -114,17 +125,21 @@ const AsideCategoriesTabs = ({ newsTabsData }) => {
                                     />
                                     {/* News Headline */}
                                     <div className="leading-tight">
-                                        <p className="hover:text-[#d84315] cursor-pointer">
+                                        <h5 className={`text-xs ${getHeadlineColor(selectedNews[0].shoulder_color)}`}>{selectedNews[0].small_title}</h5>
+                                        <h3 className={`hover:text-[#d84315] cursor-pointer ${getHeadlineColor(selectedNews[0].headline_color)}`}>
                                             <a href={`/article/${selectedNews[0].id}/${selectedNews[0].blog_url}`}>{selectedNews[0].title}</a>
-                                        </p>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div>
                                     <ul className="mt-4 grid gap-[1px] bg-gray-100">
                                         {
                                             selectedNews.slice(1).map((news, i) => (
-                                                <li key={i} className='bg-white py-2'>
-                                                    <a className='hover:text-[#d84315]' href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
+                                                <li key={i} className={`bg-white py-2 ${getHeadlineColor(news.shoulder_color)}`}>
+                                                    <h5 className={`text-xs ${getHeadlineColor(news.shoulder_color)}`}>{news.small_title}</h5>
+                                                    <h3 className={`hover:text-[#d84315] cursor-pointer ${getHeadlineColor(news.headline_color)}`}>
+                                                        <a href={`/article/${news.id}/${news.blog_url}`}>{news.title}</a>
+                                                    </h3>
                                                 </li>
                                             ))
                                         }

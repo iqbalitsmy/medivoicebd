@@ -52,6 +52,8 @@ const LoadTagsNews = ({ tagId }) => {
                         <MiniNewsCard key={index}
                             title={news.title}
                             small_title={news.small_title}
+                            headline_color={news.headline_color}
+                            shoulder_color={news.shoulder_color}
                             image={`https://medivoicebd.com/${news?.image}`}
                             news_url={`/article/${news.id}/${news.news_url}`}
                         />

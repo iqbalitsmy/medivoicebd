@@ -1,9 +1,10 @@
+import getHeadlineColor from '@/app/utils/getHeadlineColor';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React from 'react';
 
-const NewsLists = ({category, categoryUrl, news}) => {
+const NewsLists = ({ category, categoryUrl, news }) => {
     return (
         <div className="p-1 text-lg">
             {/* -----category title----- */}
@@ -11,24 +12,40 @@ const NewsLists = ({category, categoryUrl, news}) => {
             {/* first news */}
             <div className='grid gap-2'>
                 <Image src={`https://medivoicebd.com/${news[0].image}`} alt="National News" width={160} height={80} className="w-full" />
-                <p
-                    className='text-lg font-bold leading-5 hover:text-[#d84315]'
-                >
-                    <a href={`/article/${news[0].id}/${news[0].news_url}`}>{news[0].title}</a>
-                </p>
+                <div>
+                    {
+                        news[0].small_title && (
+                            <h5 className={`text-xs ${getHeadlineColor(news[0].shoulder_color)}`}>{news[0].small_title}</h5>
+                        )
+                    }
+                    <h3
+                        className={`text-lg font-bold leading-5 hover:text-[#d84315] ${getHeadlineColor(news[0].headline_color)}`}
+                    >
+                        <a href={`/article/${news[0].id}/${news[0].news_url}`}>{news[0].title}</a>
+                    </h3>
+                </div>
             </div>
             {/* news list */}
             <ul className="mt-4 grid gap-[1px] bg-gray-100">
                 {
                     news.slice(1, 5).map((leadNewsList, i) => (
                         <li key={i} className='bg-white py-2'>
-                            <FontAwesomeIcon style={{height: '1.2rem'}} icon={faCaretRight} />
-                            <a
-                                className='hover:text-[#d84315] pl-2'
-                                href={`/article/${leadNewsList.id}/${leadNewsList.news_url}`}
+                            {
+                                leadNewsList.small_title && (
+                                    <h5 className={`text-xs ${getHeadlineColor(leadNewsList.shoulder_color)}`}>{leadNewsList.small_title}</h5>
+                                )
+                            }
+                            <h3
+                                className={`${getHeadlineColor(leadNewsList.headline_color)}`}
                             >
-                                {leadNewsList.title}
-                            </a>
+                                <span>
+                                    <FontAwesomeIcon style={{ height: '1.2rem' }} icon={faCaretRight} />
+                                </span>
+
+                                <a href={`/article/${leadNewsList.id}/${leadNewsList.news_url}`} className='pl-2 hover:text-[#d84315]'>
+                                    {leadNewsList.title}
+                                </a>
+                            </h3>
                         </li>
                     ))
                 }

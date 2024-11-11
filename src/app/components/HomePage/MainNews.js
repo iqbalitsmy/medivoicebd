@@ -15,13 +15,15 @@ const MainNews = ({ news }) => {
                     </div>
                 </article>
                 {/* after first news card 2 cards */}
-                <div className='flex gap-2 justify-between'>
+                <div className='grid grid-cols-2 gap-2 sm:gap-4 justify-between'>
                     {
                         news.slice(1, 3).map((n, index) => (
                             <MiniNewsCard
                                 key={index}
                                 title={n.title}
                                 small_title={n.small_title}
+                                headline_color={n.headline_color}
+                                shoulder_color={n.shoulder_color}
                                 image={`https://medivoicebd.com/${n?.image}`}
                                 news_url={`/article/${n.id}/${n.news_url}`}
                             />
@@ -40,6 +42,8 @@ const MainNews = ({ news }) => {
                                 title: n.title,
                                 small_title: n.small_title,
                                 news_url: `/article/${n.id}/${n.news_url}`,
+                                headline_color: n.headline_color,
+                                shoulder_color: n.shoulder_color,
                             }}
                         />
                     ))

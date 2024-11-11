@@ -6,12 +6,12 @@ export const getData = async (url, method = "GET", revalidateTime = 3600 ) => {
         });
 
         if (!res.ok) {
-            throw new Error('Failed to fetch footer data');
+            throw new Error('Failed to fetch data');
         }
         return await res.json();
 
     } catch (error) {
-        console.error('Error fetching footer data:', error);
+        console.error('Error fetching data:', error);
 
         return null;
     }

@@ -5,6 +5,7 @@ import MiniNewsCard from '@/app/components/shared/MiniNewsCard/MiniNewsCard';
 import convertToBengaliDate from '@/app/utils/convertToBengaliDate';
 import convertToBengaliTime from '@/app/utils/convertToBengaliTime';
 import { getData } from '@/app/utils/getData';
+import getHeadlineColor from '@/app/utils/getHeadlineColor';
 import { faCaretRight, faShare, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
@@ -27,7 +28,7 @@ const ArticlePage = async ({ params }) => {
                         id: articleData.writer_id,
                         // url: articleData.writer_name,
                         name: articleData.writer_name,
-                        image: `https://medivoicebd.com/uploads/${articleData.writer_image}`,
+                        image: `https://medivoicebd.com/${articleData.writer_image}`,
                         details: articleData.writer_details,
                     }}
                     publishDate={`${convertToBengaliDate(articleData.date)} ${convertToBengaliTime(articleData.time)}`}
@@ -38,9 +39,11 @@ const ArticlePage = async ({ params }) => {
                 <article className=''>
                     <div>
                         {/* small title */}
-                        <h6 className='text-xs text-[#1a0dab]'>{articleData.small_title}</h6>
+                        <h6 className={`text-xs ${getHeadlineColor(articleData.shoulder_color)}`}>{articleData.small_title}</h6>
                         {/* title */}
-                        <h1 className='text-[32px] font-bold'>{articleData.title}</h1>
+                        <h1 className={`text-[32px] font-bold ${getHeadlineColor(articleData.headline_color)}`}>
+                            {articleData.title}
+                        </h1>
                         {/* image */}
                         <Image src={`https://medivoicebd.com/${articleData.image}`} height={400} width={530} alt={articleData.title} />
 
@@ -158,6 +161,8 @@ const ArticlePage = async ({ params }) => {
                                 <MiniNewsCard
                                     key={index}
                                     title={news.title}
+                                    headline_color={news.headline_color}
+                                    shoulder_color={news.shoulder_color}
                                     small_title={news.small_title}
                                     image={`https://medivoicebd.com/${news?.image}`}
                                     news_url={`/article/${news.id}/${news.news_url}`}

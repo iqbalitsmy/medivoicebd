@@ -38,6 +38,8 @@ const Category = async ({ params }) => {
                                     key={index}
                                     title={news.title}
                                     small_title={news.small_title}
+                                    headline_color={news.headline_color}
+                                    shoulder_color={news.shoulder_color}
                                     image={`https://medivoicebd.com/${news?.image}`}
                                     news_url={`/article/${news.id}/${news.news_url}`}
                                 />
@@ -65,6 +67,8 @@ const Category = async ({ params }) => {
                                             <MiniNewsCard
                                                 key={index}
                                                 title={newsRow.title}
+                                                headline_color={newsRow.headline_color}
+                                                shoulder_color={newsRow.shoulder_color}
                                                 small_title={newsRow.small_title}
                                                 image={`https://medivoicebd.com/${newsRow?.image}`}
                                                 news_url={`/article/${newsRow.id}/${newsRow.news_url}`}

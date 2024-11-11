@@ -9,7 +9,7 @@ const SearchNewsCard = ({ title, date, link, description, id }) => {
                     {title}
                 </a>
             </h2>
-            <a href={`/article/${id}/${link}`} className='text-[0.70rem] text-[#2196f3] font-serif'>https://medivoicebd.com/search/article/${id}</a>
+            <a href={`/article/${id}/${link}`} className='text-[0.70rem] text-[#2196f3] font-serif'>https://medivoicebd.com/search/article/{id}</a>
 
             <p className="mt-2 line-clamp-3 text-lg"><span className='text-gray-500'>{convertToBanglaDigitDate(date)}</span> - {description}</p>
         </div>

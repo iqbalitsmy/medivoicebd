@@ -36,6 +36,8 @@ const SubCategoryLayout = async ({ params }) => {
                                     <MiniNewsCard
                                         key={index}
                                         title={news.title}
+                                        headline_color={news.headline_color}
+                                        shoulder_color={news.shoulder_color}
                                         small_title={news.small_title}
                                         image={`https://medivoicebd.com/${news?.image}`}
                                         news_url={`/article/${news.id}/${news.news_url}`}
@@ -49,6 +51,8 @@ const SubCategoryLayout = async ({ params }) => {
                                     <MiniNewsCard
                                         key={index}
                                         title={news.title}
+                                        headline_color={news.headline_color}
+                                        shoulder_color={news.shoulder_color}
                                         small_title={news.small_title}
                                         image={`https://medivoicebd.com/${news?.image}`}
                                         news_url={`/article/${news.id}/${news.news_url}`}
