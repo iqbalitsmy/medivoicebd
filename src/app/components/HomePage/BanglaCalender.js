@@ -25,7 +25,7 @@ const currentMonth = currentDate.getMonth();
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
   // Bengali days and months
-  const banglaDays = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'];
+  const banglaDays = ['রোব', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'];
   const banglaMonths = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
 
   // Get number of days in the selected month and the first day of the month
