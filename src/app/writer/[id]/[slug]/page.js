@@ -14,7 +14,7 @@ const WritePage = async ({ params }) => {
                 {/* Top Profile Section */}
                 <Image
                     className="w-36 h-40 rounded-md object-contain"
-                    src={`https://medivoicebd.com/uploads/writers/${writerData?.image}`}
+                    src={`https://medivoicebd.com/${writerData?.image}`}
                     height={200} width={200}
                     alt={writerData?.name}
                 />
