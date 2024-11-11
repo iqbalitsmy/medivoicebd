@@ -14,13 +14,13 @@ const WritePage = async ({ params }) => {
                 {/* Top Profile Section */}
                 <Image
                     className="w-36 h-40 rounded-md object-contain"
-                    src={`https://medivoicebd.com/uploads/${writerData?.image}`}
+                    src={`https://medivoicebd.com/uploads/writers/${writerData?.image}`}
                     height={200} width={200}
                     alt={writerData?.name}
                 />
-                <div>
+                <div className='mt-2'>
                     <h2 className="text-[28px] font-bold text-red-600">{writerData?.name}</h2>
-                    <p className="text-gray-600">{writerData?.bio}</p>
+                    <div dangerouslySetInnerHTML={{ __html: writerData?.details }}></div>
                 </div>
             </div>
             {
